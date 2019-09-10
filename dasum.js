@@ -6,7 +6,7 @@ function dasum(n, dx, incx) {
   dtemp = 0
   if(n < 0) return 0
   if(incx === 1) {
-    m = mod(n,6)
+    m = n - 6 * Math.floor(n / 6).
     if( m === 0 ) {
       mp1 = m + 1
       for(let i = mp1; i <= n; i += 6) {
