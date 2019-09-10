@@ -39,7 +39,6 @@ function dist (n,x,y) {
    sum = 1
    scale = absxmy
  }
- console.log(absxmy,sum)
  for (let i = 1; i < n; i++) {
    absxmy = Math.abs(x[i] - y[i])
    if (absxmy <= scale) {
@@ -52,5 +51,3 @@ function dist (n,x,y) {
  // dist = scale * Math.sqrt(sum)
  return scale * Math.sqrt(sum)
 }
-
-console.log(dist (2, [0,0], [2,2]))
