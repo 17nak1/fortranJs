@@ -31,7 +31,7 @@
 // c
 function dist (n,x,y) {
  let absxmy,scale,sum
- absxmy = Math.abs(x[1]-y[1])
+ absxmy = Math.abs(x[0]-y[0])
  if (absxmy <= 1) {
    sum = absxmy*absxmy
    scale = 1
