@@ -1,46 +1,31 @@
-//       double precision function dasum(n,dx,incx)
-// c
+
 // c     takes the sum of the absolute values.
-// c     uses unrolled loops for increment equal to one.
-// c     jack dongarra, linpack, 3/11/78.
-// c     modified to correct problem with negative increment, 8/21/90.
-// c
-//       double precision dx(1),dtemp
-//       integer i,incx,ix,m,mp1,n
-// c
+
 function dasum(n, dx, incx) {
-      dasum = 0.0d0
-      dtemp = 0.0d0
-      if(n.le.0)return
-      if(incx.eq.1)go to 20
-c
-c        code for increment not equal to 1
-c
-      ix = 1
-      if(incx.lt.0)ix = (-n+1)*incx + 1
-      do 10 i = 1,n
-        dtemp = dtemp + dabs(dx(ix))
-        ix = ix + incx
-   10 continue
-      dasum = dtemp
-      return
-c
-c        code for increment equal to 1
-c
-c
-c        clean-up loop
-c
-   20 m = mod(n,6)
-      if( m .eq. 0 ) go to 40
-      do 30 i = 1,m
-        dtemp = dtemp + dabs(dx(i))
-   30 continue
-      if( n .lt. 6 ) go to 60
-   40 mp1 = m + 1
-      do 50 i = mp1,n,6
-        dtemp = dtemp + dabs(dx(i)) + dabs(dx(i + 1)) + dabs(dx(i + 2))
-     *  + dabs(dx(i + 3)) + dabs(dx(i + 4)) + dabs(dx(i + 5))
-   50 continue
-   60 dasum = dtemp
-      return
-      end
+  dasum = 0
+  dtemp = 0
+  if(n < 0) return 0
+  if(incx === 1) {
+    m = mod(n,6)
+    if( m === 0 ) {
+      mp1 = m + 1
+      for(let i = mp1; i <= n; i += 6) {
+        dtemp = dtemp + Math.abs[dx[i]] + Math.abs[dx[i + 1]] + Math.abs[dx[i + 2]] + Math.abs[dx[i + 3]] + Math.abs[dx[i + 4]] + Math.abs[dx[i + 5]]
+      }
+    } else {
+    for(let i = 1; i <= m; i++) {
+      dtemp = dtemp + Math.abs[dx[i]]
+    }
+    if( n < 6 ) dasum = dtemp
+    }
+  } else {
+    ix = 1
+    if(incx < 0) ix = (-n+1)*incx + 1
+    for (i = 1; i <= n; i++) {
+      dtemp = dtemp + Math.abs(dx(ix))
+      ix = ix + incx
+    }
+    dasum = dtemp
+  }
+  return dasum
+}
