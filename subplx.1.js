@@ -44,7 +44,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
 
         case 15:
 
-          subopt(n)
+          this.subopt(n)
 
           istptr = n + 1;
           isptr = istptr + n;
