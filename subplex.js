@@ -25,3 +25,5 @@ subplex.subopt = require('./subopt.js')
 subplex.subplx = require('./subplx.1.js')
 
 console.log('s')
+
+module.exports = subplex;
