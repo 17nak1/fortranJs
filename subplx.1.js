@@ -16,8 +16,8 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
   {
       switch (goto_variable){
         case 10:
-
-          if(scale[1] >= 0){
+          goto_variable = 15;
+          if(scale[0] >= 0){
             //
             // 10
             //
@@ -25,6 +25,7 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
               xpscl = x[i]+scale[i];
               if (xpscl === x[i]){
                  goto_variable = 120;
+                 break;
               }
             }
           }
@@ -35,9 +36,15 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             scl = Math.abs(scale[1])
             for( i = 0; i < n; i++){
               xpscl = x[i]+scl;
-              if (xpscl === x[i]) break;
+              if (xpscl === x[i]){
+                goto_variable = 120;
+                break;
+              }
             }
           }
+        break;
+
+        case 15:
 
           subopt(n)
 
@@ -45,7 +52,7 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           isptr = istptr + n;
           ifsptr = isptr + nsmax * (nsmax + 3)
           insptr = n + 1
-          if (scale[1] > 0){
+          if (scale[0] > 0){
             dcopy(n,scale,1,work,1)
             dcopy(n,scale,1,work[istptr],1)
           }
@@ -170,7 +177,6 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
           // 110
           //
-
           fx = sfx
           return 0;
         break;
