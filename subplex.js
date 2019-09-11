@@ -28,6 +28,7 @@ subplex.partx = require('./partx.js')
 subplex.setstp = require('./setstp.js')
 
 subplex.start = require('./start.js')
+subplex.order = require('./order.js')
 
 subplex.simplx = require('./simplx.js')
 

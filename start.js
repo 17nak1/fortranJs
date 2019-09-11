@@ -1,4 +1,4 @@
-let start = function(){
+let start = function(n,x,step,ns,ips,s,small){
     let i,j
     for(i = 0; i< ns; i++){
         s[i,1] = x[ips[i]]
