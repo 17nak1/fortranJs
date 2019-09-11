@@ -7,9 +7,11 @@
 *                incx  storage spacing between elements of dx
 *                dy    double precision vector with n elements
 *                incy  storage spacing between elements of dy
+*
 *  @author       Nazila Akhavan
 *  @date         Sep 2019
 */
+
 function dcopy(n,dx,incx,dy,incy) {
    let ix,iy,m,mp1
       if(n <= 0) return 0

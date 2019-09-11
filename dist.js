@@ -1,34 +1,17 @@
-// double precision function dist (n,x,y)
-// c
-//       integer n
-//       double precision x(n),y(n)
-// c
-// c                                         Coded by Tom Rowan
-// c                            Department of Computer Sciences
-// c                              University of Texas at Austin
-// c
-// c dist calculates the distance between the points x,y.
-// c
-// c input
-// c
-// c   n      - number of components
-// c
-// c   x      - point in n-space
-// c
-// c   y      - point in n-space
-// c
-// c local variables
-// c
-//       integer i
-//       double precision absxmy,scale,sum
-// c
-// c subroutines and functions
-// c
-// c   fortran
-//       intrinsic abs,sqrt
-// c
-// c-----------------------------------------------------------
-// c
+/*
+*  @file         dist.js
+*                dist calculates the distance between the points x,y.
+*  @inputs
+*   n      - number of components
+*
+*   x      - point in n-space
+*
+*   y      - point in n-space
+*
+*  @author       Nazila Akhavan
+*  @date         Sep 2019
+*/
+
 function dist (n,x,y) {
  let absxmy,scale,sum
  absxmy = Math.abs(x[0]-y[0])
@@ -50,4 +33,3 @@ function dist (n,x,y) {
  }
  return scale * Math.sqrt(sum)
 }
-

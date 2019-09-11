@@ -1,5 +1,23 @@
+/*
+*  @file         daxpy.js
+*                constant times a vector plus a vector. y = a*x + y
+*  @inputs
+*   n        - number of components
+*
+*   da       - constant
+*
+*   dx       - point in n-space
+*
+*   incx     -storage spacing between elements of dx
+*
+*   dy      - point in n-space
+*
+*   incy     -storage spacing between elements of dy
+*
+*  @author       Nazila Akhavan
+*  @date         Sep 2019
+*/
 
-// c     constant times a vector plus a vector. y = a*x + y
 
 function daxpy(n,da,dx,incx,dy,incy) {
   if(n <= 0) return 0

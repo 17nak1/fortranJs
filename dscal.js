@@ -5,9 +5,9 @@
 *  @inputs
 *               n     number of elements in input vector(s)
 *               dx    double precision vector with N elements
-*               incx  storage spacing between elements of DX
-*               DY  double precision vector with N elements
-*               INCY  storage spacing between elements of DY
+*               incx  storage spacing between elements of dx
+*               dy  double precision vector with N elements
+*               incy  storage spacing between elements of dy
 *
 *  @author      Nazila Akhavan
 *  @date        Sep 2019
