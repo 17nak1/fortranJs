@@ -23,7 +23,9 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             //
             for( i = 0; i < n; i++){
               xpscl = x[i]+scale[i];
-              if (xpscl === x[i]) break;
+              if (xpscl === x[i]){
+                 goto_variable = 120;
+              }
             }
           }
           else{
