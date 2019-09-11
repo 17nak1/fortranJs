@@ -19,7 +19,7 @@
 */
 
 
-function daxpy(n,da,dx,incx,dy,incy) {
+let daxpy = function(n,da,dx,incx,dy,incy) {
   if(n <= 0) return 0
   if (da === 0) return 0
   if(incx === 1 && incy === 1) {
@@ -58,3 +58,5 @@ function daxpy(n,da,dx,incx,dy,incy) {
 }
 
 // console.log(daxpy(2,1,[2,4],1, [2,2],1))
+
+module.exports = daxpy;

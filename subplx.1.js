@@ -2,11 +2,9 @@
 //       external dcopy
 //       intrinsic abs,mod
 
-function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-  let nsmin,nsmax,nfxe;
-  let alpha,beta,gamma,delta,psi,omega,fxstat,ftest;
-  let initx;
-  let i,j,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
+let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
+
+  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
   let bnsfac = [[-1,-2,0],[1,0,2]];
   let dum,scl,sfx,xpscl;
   let cmode;
@@ -71,7 +69,7 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           
           nfe = 0
           nfxe = 1
-          ftest = 0
+          this.ftest = 0
           cmode = false
           initx = true
           evalf(f,0,iwork,dum,n,x,sfx,nfe)
@@ -157,7 +155,7 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // 100
           //
           for( i = 0; i < n; i++){
-            if (Math.max(Math.abs(work[i]),Math.abs(work[istep])*psi) / Math.max(Math.abs(x[i]),1) > tol){
+            if (Math.max(Math.abs(work[i]),Math.abs(work[istep])* this.psi) / Math.max(Math.abs(x[i]),1) > tol){
               setstp(nsubs,n,work,work[istptr]);
               goto_variable = 40;
               break;
@@ -193,3 +191,5 @@ function subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
   }
 
 }
+
+module.exports = subplx;

@@ -13,9 +13,8 @@
 *  @date        Sep 2019
 */
 
-function dscal(n,da,dx,incx) {
-  let ix,m,mp1
-​
+let dscal = function(n,da,dx,incx) {
+  let ix,m,mp1;
   if(n <= 0) return 0
   if(incx === 1) {
     m = n - 5 * Math.floor(n / 5)
@@ -43,3 +42,5 @@ function dscal(n,da,dx,incx) {
   }
   return dx
 }
+
+module.exports = dscal;
