@@ -27,6 +27,10 @@ subplex.sortd = require('./sortd.js')
 subplex.partx = require('./partx.js')
 subplex.setstp = require('./setstp.js')
 
+subplex.start = require('./start.js')
+
+subplex.simplx = require('./simplx.js')
+
 subplex.subplx = require('./subplx.1.js')
 console.log('s')
 
