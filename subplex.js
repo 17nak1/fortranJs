@@ -29,6 +29,7 @@ subplex.setstp = require('./setstp.js')
 
 subplex.start = require('./start.js')
 subplex.order = require('./order.js')
+subplex.newpt = require('./newpt.js')
 
 subplex.simplx = require('./simplx.js')
 
