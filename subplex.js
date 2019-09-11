@@ -22,6 +22,8 @@ subplex.calcc = require('./calcc.js')
 
 subplex.subopt = require('./subopt.js')
 
+subplex.evalf = require('./evalf.js')
+
 subplex.subplx = require('./subplx.1.js')
 
 console.log('s')

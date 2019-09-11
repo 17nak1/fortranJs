@@ -51,12 +51,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           ifsptr = isptr + nsmax * (nsmax + 3)
           insptr = n + 1
           if (scale[0] > 0){
-            dcopy(n,scale,1,work,1)
-            dcopy(n,scale,1,work[istptr],1)
+            this.dcopy(n,scale,1,work,1)
+            this.dcopy(n,scale,1,work[istptr],1)
           }
           else{
-            dcopy(n,scl,0,work,1)
-            dcopy(n,scl,0,work[istptr],1)
+            this.dcopy(n,scl,0,work,1)
+            this.dcopy(n,scl,0,work[istptr],1)
           }
 
           //
@@ -72,7 +72,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           this.ftest = 0
           cmode = false
           initx = true
-          evalf(f,0,iwork,dum,n,x,sfx,nfe)
+          this.evalf(f,0,iwork,dum,n,x,sfx,nfe)
           initx = false
           
           goto_variable = 40;
