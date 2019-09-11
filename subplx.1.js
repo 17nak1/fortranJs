@@ -156,7 +156,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
           for( i = 0; i < n; i++){
             if (Math.max(Math.abs(work[i]),Math.abs(work[istep])* this.psi) / Math.max(Math.abs(x[i]),1) > tol){
-              setstp(nsubs,n,work,work[istptr]);
+              this.setstp(nsubs,n,work,work[istptr]);
               goto_variable = 40;
               break;
             }
