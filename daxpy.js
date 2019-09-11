@@ -57,6 +57,6 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
   return dy
 }
 
-console.log(daxpy(2,1,[2,4],1, [2,2],1))
+// console.log(daxpy(2,1,[2,4],1, [2,2],1))
 
 module.exports = daxpy;

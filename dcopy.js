@@ -2,11 +2,15 @@
 *  @file         dcopy.js
 *                Copy a vector dx in dy.
 *  @inputs
-*                n     number of elements in input vector(s)
-*                dx    double precision vector with n elements
-*                incx  storage spacing between elements of dx
-*                dy    double precision vector with n elements
-*                incy  storage spacing between elements of dy
+*   n             -number of elements in input vector(s)
+*
+*   dx            -double precision vector with n elements
+*
+*   incx          -storage spacing between elements of dx
+*
+*   dy            -double precision vector with n elements
+*
+*   incy          -storage spacing between elements of dy
 *
 *  @author       Nazila Akhavan
 *  @date         Sep 2019
