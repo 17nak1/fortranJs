@@ -31,7 +31,7 @@
 // c
 function dist (n,x,y) {
  let absxmy,scale,sum
- absxmy = Math.abs(x[1]-y[1])
+ absxmy = Math.abs(x[0]-y[0])
  if (absxmy <= 1) {
    sum = absxmy*absxmy
    scale = 1
@@ -39,7 +39,6 @@ function dist (n,x,y) {
    sum = 1
    scale = absxmy
  }
- console.log(absxmy,sum)
  for (let i = 1; i < n; i++) {
    absxmy = Math.abs(x[i] - y[i])
    if (absxmy <= scale) {
@@ -49,8 +48,6 @@ function dist (n,x,y) {
      scale = absxmy
    }
  }
- // dist = scale * Math.sqrt(sum)
  return scale * Math.sqrt(sum)
 }
 
-console.log(dist (2, [0,0], [2,2]))
