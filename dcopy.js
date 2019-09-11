@@ -12,7 +12,7 @@
 *  @date         Sep 2019
 */
 
-function dcopy(n,dx,incx,dy,incy) {
+let dcopy = function(n,dx,incx,dy,incy) {
    let ix,iy,m,mp1
       if(n <= 0) return 0
       if(incx === 1 && incy === 1) {
@@ -46,3 +46,5 @@ function dcopy(n,dx,incx,dy,incy) {
       }
       return dy 
  }
+
+ module.exports = dcopy;
