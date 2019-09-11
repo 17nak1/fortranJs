@@ -90,9 +90,9 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           for( i = 0; i < n; i++){
             work[i] = Math.abs(work[i]);
           }
-          sortd(n,work,iwork)
-          partx(n,iwork,work,nsubs,iwork[insptr])
-          dcopy(n,x,1,work,1)
+          this.sortd(n,work,iwork)
+          this.partx(n,iwork,work,nsubs,iwork[insptr])
+          this.dcopy(n,x,1,work,1)
           ins = insptr
           insfnl = insptr + nsubs - 1
           ipptr = 1
