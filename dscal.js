@@ -11,6 +11,8 @@
 *
 *  @author      Nazila Akhavan
 *  @date        Sep 2019
+*  @references   Tom Rowan, Department of Computer Sciences, University of Texas at Austin
+*                https://www.netlib.org/opt/
 */
 
 let dscal = function(n,da,dx,incx) {

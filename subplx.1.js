@@ -1,11 +1,90 @@
+/* 
+*  @file        subplx.js                
+*               subplx uses the subplex method to solve unconstrained
+*               optimization problems.  The method is well suited for
+*               optimizing objective functions that are noisy or are
+*               discontinuous at the solution.
+*
+*               subplx sets default optimization options by calling the
+*               subroutine subopt.  The user can override these defaults
+*               by calling subopt prior to calling subplx, changing the
+*               appropriate common variables, and setting the value of
+*               mode as indicated below.
+*
+*               By default, subplx performs minimization.
+*
+*  @input
+*
+*                 f      - user supplied function f(n,x) to be optimized,
+*                          declared external in calling routine
+*
+*                 n      - problem dimension
+*
+*                 tol    - relative error tolerance for x (tol .ge. 0.)
+*
+*                 maxnfe - maximum number of function evaluations
+*
+*                 mode   - integer mode switch with binary expansion
+*                          (bit 1) (bit 0) :
+*                          bit 0 = 0 : first call to subplx
+*                                = 1 : continuation of previous call
+*                          bit 1 = 0 : use default options
+*                                = 1 : user set options
+*
+*                 scale  - scale and initial stepsizes for corresponding
+*                          components of x
+*                          (If scale(1) .lt. 0.,
+*                          abs(scale(1)) is used for all components of x,
+*                          and scale(2),...,scale(n) are not referenced.)
+*
+*                 x      - starting guess for optimum
+*
+*                 work   - double precision work array of dimension .ge.
+*                          2*n + nsmax*(nsmax+4) + 1
+*                          (nsmax is set in subroutine subopt.
+*                          default: nsmax = min(5,n))
+*
+*                 iwork  - integer work array of dimension .ge.
+*                          n + int(n/nsmin)
+*                          (nsmin is set in subroutine subopt.
+*                          default: nsmin = min(2,n))
+*
+*  @output
+*
+*                 x      - computed optimum
+*
+*                 fx     - value of f at x
+*
+*                 nfe    - number of function evaluations
+*
+*                 iflag  - error flag
+*                          = -2 : invalid input
+*                          = -1 : maxnfe exceeded
+*                          =  0 : tol satisfied
+*                          =  1 : limit of machine precision
+*                          =  2 : fstop reached (fstop usage is determined
+*                                 by values of options minf, nfstop, and
+*                                 irepl. default: f(x) not tested against
+*                                 fstop)
+*                          iflag should not be reset between calls to
+*                          subplx.
+*
+*  @author       Nazila Akhavan
+*  @date         Sep 2019
+*  @references   Tom Rowan, Department of Computer Sciences, University of Texas at Austin
+*                https://www.netlib.org/opt/
+*/
+
+
+
 //       external f,sortd,evalf,partx,setstp,simplx,subopt
 //       external dcopy
-//       intrinsic abs,mod
+//       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
 
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
-  let bnsfac = [[-1,-2,0],[1,0,2]];
+  let bnsfa*               = [[-1,-2,0],[1,0,2]];
   let dum,scl,sfx,xpscl;
   let cmode;
 
