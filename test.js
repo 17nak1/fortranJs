@@ -15,7 +15,7 @@ console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
 // console.log(abji.simplx(2,1,[2,4],1, [2,2],1))
 console.log(abji.sortd(2,1,[2,4],1, [2,2],1))   
 // console.log(abji.start(2,1,[2,4],1, [2,2],1))
-// console.log(abji.subopt(2,1,[2,4],1, [2,2],1))
+console.log(abji.subopt(2))
 // console.log(abji.subplex(2,1,[2,4],1, [2,2],1))
 // console.log(abji.subplx(2,1,[2,4],1, [2,2],1))
 

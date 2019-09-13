@@ -30,30 +30,28 @@
 *  @references   Tom Rowan, Department of Computer Sciences, University of Texas at Austin
 *                https://www.netlib.org/opt/
 */
+dcopy = require('./dcopy.js')
+daxpy = require('./daxpy.js')
+dscal= require('./dscal.js')
 
 let calcc = function(ns,s,ih,inew,updatc,c) {
     if (updatc) {
-      if (ih === inew) return
+      if (ih === inew) return 0
       for(let i = 0; i < ns; i++) {
         c[i] = c[i] + (s[i][inew] - s[i][ih]) / ns
       }
     } else {
-      this.dcopy (ns,[0],0,c,1)
-      // c = new Array(ns).fill(0)
-      for(let j = 0; j < ns + 1; j++) {
+      dcopy (ns,[0],0,c,1)
+      for(let j = 0; j < ns + 1 ; j++) {
         if (j !== ih) {
-          this.daxpy (ns,1,s(1,j),1,c,1)     
-            // for (let k  = 0; k < ns ; k++) {
-            //     c[k] = s[1][j] + c[k]
-            // } 
+          daxpy (ns,1,[s[1][j]],1,c,1)      
         }
       }
-      this.dscal (ns,1/ns,c,1)
-      // for (let k  = 0; k < ns ; k++) {
-      //   c[k] = 1 / ns * c[k]
-      // } 
+      dscal (ns,1/ns,c,1) 
     }
   console.log(c)  
 } 
 
 module.exports = calcc;
+
+// calcc(1,[[-1,0],[1,0], [0,2]],2,1,false,[0,1])
