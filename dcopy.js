@@ -53,4 +53,4 @@ let dcopy = function(n,dx,incx,dy,incy) {
       return dy 
  }
 
- module.exports = dcopy;
+module.exports = dcopy;

@@ -35,3 +35,5 @@ function dist (n,x,y) {
  }
  return scale * Math.sqrt(sum)
 }
+
+ module.exports = dist;
