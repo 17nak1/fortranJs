@@ -31,6 +31,10 @@ subplex.start = require('./start.js')
 subplex.order = require('./order.js')
 subplex.newpt = require('./newpt.js')
 
+subplex.dasum = require('./dasum.js')
+subplex.dist = require('./dist.js')
+subplex.fstats = require('./fstats.js')
+
 subplex.simplx = require('./simplx.js')
 
 subplex.subplx = require('./subplx.1.js')

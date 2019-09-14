@@ -14,7 +14,7 @@
 *                https://www.netlib.org/opt/
 */
 
-function dist (n,x,y) {
+let dist = function(n,x,y) {
  let absxmy,scale,sum
  absxmy = Math.abs(x[0]-y[0])
  if (absxmy <= 1) {

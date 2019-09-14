@@ -15,7 +15,7 @@
 *                https://www.netlib.org/opt/
 */
 
-const dasum =  function (n, dx, incx) {
+let dasum =  function (n, dx, incx) {
   console.log(incx)
   das = 0
   dtemp = 0
@@ -47,3 +47,5 @@ const dasum =  function (n, dx, incx) {
     das = dtemp
       return das
 }
+
+module.exports = dasum;

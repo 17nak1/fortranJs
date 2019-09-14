@@ -40,4 +40,5 @@ let fstats = function (fx,ifxwt,reset) {
     console.log(nfxe,fxstat)
     return 0
   }
+  
 module.exports = fstats;

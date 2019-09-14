@@ -84,7 +84,7 @@
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
 
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
-  let bnsfa*               = [[-1,-2,0],[1,0,2]];
+  let bnsfa = [[-1,-2,0],[1,0,2]];
   let dum,scl,sfx,xpscl;
   let cmode;
 
