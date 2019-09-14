@@ -37,7 +37,7 @@ subplex.fstats = require('./fstats.js')
 
 subplex.simplx = require('./simplx.js')
 
-subplex.subplx = require('./subplx.1.js')
+subplex.subplx = require('./subplx.js')
 console.log('s')
 
 module.exports = subplex;
