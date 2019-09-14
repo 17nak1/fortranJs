@@ -1,12 +1,15 @@
 let abji = require('./subplex.js');
 
-// console.log(abji.calcc(2,1,[2,4],1, [2,2],1))
+//console.log(abji.calcc(2,1,[2,4],1, [2,2],1))
 console.log(abji.dasum(2,1,[2,4],1, [2,2],1))
 console.log(abji.daxpy(2,1,[2,4],1, [2,2],1))
-console.log(abji.dcopy(2,1,[2,4],1, [2,2],1))
+console.log(abji.dcopy(2,[2,4],1, [2,2],1))
 console.log(abji.dist(2,1,[2,4],1, [2,2],1))
 console.log(abji.dscal(2,1,[2,4],1, [2,2],1))
-// console.log(abji.evalf(2,1,[2,4],1, [2,2],1))
+
+var evalfout = {};
+console.log(abji.evalf((n,x) => x.length * n ,3,[1,2,3],[1,2,3],2,[1,2,3], evalfout,0)) //amir
+
 console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
 // console.log(abji.newpt(2,1,[2,4],1, [2,2],1))
 // console.log(abji.order(2,1,[2,4],1, [2,2],1))

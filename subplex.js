@@ -13,7 +13,7 @@ var subplex = {
      initx : true
 }
 
-
+subplex.evalf = require('./evalf.js')
 subplex.dcopy = require('./dcopy.js')
 subplex.dscal = require('./dscal.js')
 subplex.daxpy = require('./daxpy.js')
