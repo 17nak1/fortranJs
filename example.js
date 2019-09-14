@@ -11,11 +11,7 @@ let f = function (x) {
       tol= 2.220446e-16
       maxnfe=10000
       scale=1
-      hessian= false
-      nscal = scal.length
-      scalp = scale
-      Xp = [].concat(x0)
-      let val, counts, conv //for outputs
+   
  //      work[n*(n+6)+1], iwork[2*n] pointers
  x = x0
  subplx(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag)// Output: x,fx,nfe, iflag
