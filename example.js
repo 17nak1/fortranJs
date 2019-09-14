@@ -7,7 +7,7 @@ let f = function (x) {
 
  
       x0=c(11,-33)
- 
+      n= x0.length
       tol= 2.220446e-16
       maxnfe=10000
       scale=1
@@ -18,7 +18,7 @@ let f = function (x) {
       let val, counts, conv //for outputs
  //      work[n*(n+6)+1], iwork[2*n] pointers
  x = x0
- subplx(f,x0.length,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag)// Output: x,fx,nfe, iflag
+ subplx(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag)// Output: x,fx,nfe, iflag
 
 x = [1, 1]
 
