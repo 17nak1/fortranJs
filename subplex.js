@@ -8,14 +8,14 @@ var subplex = {
      delta : 0.0,
      psi : 0.0,
      omega : 0.0,
-     fxstat : Array(4),
+     fxstat : Array(5),
      ftest : 0.0,
      initx : true,
 
 
      tol : 1.38777878078144568e-17,
      maxnfe : 10000,
-     scale : [1],
+     scale : [0,1],
      x0 : [],
      n : 0,
      f : {},

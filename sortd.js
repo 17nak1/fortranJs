@@ -20,11 +20,11 @@
 
 let sortd = function(n,xkey,ix){
     let i,ifirst,ilast,iswap,ixi,ixip1;
-    ifirst = 0
+    ifirst = 1
     iswap = 1
     ilast = n-1
     while(ifirst <= ilast){
-        for(i = ifirst; i < ilast; i++){
+        for(i = ifirst; i <= ilast; i++){
             ixi = ix[i]
             ixip1 = ix[i+1]
             if (xkey[ixi] < xkey[ixip1]){
@@ -33,8 +33,8 @@ let sortd = function(n,xkey,ix){
                 iswap = i
             }
         }
-        ilast = iswap
-        for( i = ilast-1; i>=0 ; i--){
+        ilast = iswap -1
+        for( i = ilast; i>0 ; i--){
             ixi = ix[i]
             ixip1 = ix[i+1]
             if (xkey[ixi] < xkey[ixip1]){

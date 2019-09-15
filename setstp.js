@@ -9,7 +9,7 @@ let setstp = function(nsubs,n,deltax,step){
     }
     this.dscal(n,stpfac,step,1)
 
-    for(i = 0; i < n ; i++){
+    for(i = 1; i <= n ; i++){
       if (deltax[i] !== 0){
         step[i] = Math.sign(step[i],deltax[i])
       }

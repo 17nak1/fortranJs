@@ -33,18 +33,18 @@ let partx = function(n,ip,absdx,nsubs,nsvals,snsvals){
   nsubs.out = 0
   nused = 0
   nleft = n
-  asleft = absdx[0];
-  for(i = 1; i < n ; i++){
+  asleft = absdx[1];
+  for(i = 2; i <= n ; i++){
     asleft = asleft+absdx[i]
   }
   while(nused < n){
     nsubs.out = nsubs.out+1
     as1 = 0
-    for(i = 0; i < this.nsmin-1; i++){
+    for(i = 1; i <= this.nsmin-1; i++){
       as1 = as1+absdx[ip[nused+i]]
     }
     gapmax = -1
-    for(ns1 = this.nsmin-1; ns1 < Math.min(this.nsmax,nleft); ns1++){
+    for(ns1 = this.nsmin; ns1 <= Math.min(this.nsmax,nleft); ns1++){
       as1 = as1+absdx[ip[nused+ns1]]
       ns2 = nleft-ns1
       if (ns2 > 0){
