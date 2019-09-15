@@ -15,19 +15,19 @@ let run = function(){
 
     switch (this.conv) {
         case -1:
-            console.log("number of function evaluations exceeds 'maxit'");
+            console.log('number of function evaluations exceeds \'maxit\'');
           break;
         case 0:
-            console.log("success! tolerance satisfied");
+            console.log('success! tolerance satisfied');
           break;
         case 1:
-            console.log("limit of machine precision reached");
+            console.log('limit of machine precision reached');
           break;
         case -2:
-            console.log("'parscale' is too small relative to 'par'";
+            console.log('\'parscale\' is too small relative to \'par\'');
           break;
         case 2: default:
-            console.log("impossible error in subplex"); // # nocov
+            console.log('impossible error in subplex'); // # nocov
           break;
         }
 }
