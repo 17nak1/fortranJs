@@ -82,7 +82,6 @@
 //       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-  let alpha,beta,gamma,delta,psi,omega,nsmin,nsmax,nfxe,initx,fxstat = [],ftest//global
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
   let bnsfa = [[-1,-2,0],[1,0,2]];
   let dum,scl,sfx,xpscl;
@@ -110,7 +109,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             //
             //20
             //
-            scl = Math.abs(scale[1])
+            scl = Math.abs(scale[0])
             for( i = 0; i < n; i++){
               xpscl = x[i]+scl;
               if (xpscl === x[i]){
@@ -125,10 +124,10 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
 
           this.subopt(n)
 
-          istptr = n + 1;
+          istptr = n
           isptr = istptr + n;
-          ifsptr = isptr + nsmax * (nsmax + 3)
-          insptr = n + 1
+          ifsptr = isptr + this.nsmax * (this.nsmax + 3)
+          insptr = n
           if (scale[0] > 0){
             this.dcopy(n,scale,1,work,1)
             this.dcopy(n,scale,1,work[istptr],1)
@@ -147,12 +146,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           }
           
           nfe = 0
-          nfxe = 1
+          this.nfxe = 1
           this.ftest = 0
           cmode = false
-          initx = true
+          this.initx = true
           this.evalf(f,0,iwork,dum,n,x,sfx,nfe)
-          initx = false
+          this.initx = false
           
           goto_variable = 40;
         break;
@@ -174,7 +173,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           this.dcopy(n,x,1,work,1)
           ins = insptr
           insfnl = insptr + nsubs - 1
-          ipptr = 1
+          ipptr = 0
 
           goto_variable = 60;
         break;

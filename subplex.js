@@ -10,7 +10,20 @@ var subplex = {
      omega : 0.0,
      fxstat : Array(4),
      ftest : 0.0,
-     initx : true
+     initx : true,
+
+
+     tol : 1.38777878078144568e-17,
+     maxnfe : 10000,
+     scale : [1],
+     x0 : [],
+     n : 0,
+     f : {},
+     work : [],
+     iwork : [],
+     fx : 0,
+     nfe : 0,
+     iflag : 0
 }
 
 subplex.evalf = require('./evalf.js')
@@ -38,6 +51,8 @@ subplex.fstats = require('./fstats.js')
 subplex.simplx = require('./simplx.js')
 
 subplex.subplx = require('./subplx.js')
+
+subplex.run = require('./run.js')
 console.log('s')
 
 module.exports = subplex;

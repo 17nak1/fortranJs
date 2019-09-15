@@ -137,7 +137,6 @@ let subopt = function(n){
     this.omega = 0.1;
     this.nsmin = Math.min(2,n);
     this.nsmax = Math.min(5,n)
-    return 0;
 }
 
 module.exports = subopt;

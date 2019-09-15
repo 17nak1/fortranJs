@@ -18,7 +18,7 @@ console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
 // console.log(abji.simplx(2,1,[2,4],1, [2,2],1))
 console.log(abji.sortd(2,1,[2,4],1, [2,2],1))   
 // console.log(abji.start(2,1,[2,4],1, [2,2],1))
-console.log(abji.subopt(2))
+console.log(abji.subopt(2)) /** ok Amir */
 // console.log(abji.subplex(2,1,[2,4],1, [2,2],1))
 // console.log(abji.subplx(2,1,[2,4],1, [2,2],1))
 
@@ -42,22 +42,12 @@ console.log(abji.subopt(2))
 // mdsing = 0;
 // mode = 4 * mdsing + 2 * mduser + mdcont;
 
-let f = function (x) {  
-    let x1, x2
-    x1 = x[0]
-    x2 = x[1]
-    return 100*(x2-x1*x1)**2+(1-x1)**2
+abji.f = function (x) {  
+      let x1, x2
+      x1 = x[0]
+      x2 = x[1]
+      return 100*(x2-x1*x1)**2+(1-x1)**2
 }
+abji.x0 = [11,-33];
 
- 
-      let x0 = [11,-33],
-      n= x0.length,
-      tol= 2.220446e-16,
-      maxnfe=10000,
-      scale=1
-   
-      let work = new Array(n).fill(Array((n+6)+1))
-      let iwork = new Array(2).fill(Array(n))
- let x = x0
- let fx = 0,nfe=0, iflag
-abji.subplx (f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag)
+abji.run()
