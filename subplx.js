@@ -84,7 +84,7 @@
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs={};
   let bnsfa = [[0,0,0,0],[0,-1,-2,0],[0,1,0,2]];
-  let dum,scl = [],sfx = {},xpscl;
+  let dum,scl = [],sfx = [],xpscl;
   let cmode;
 
   let goto_variable = 10;
@@ -145,12 +145,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             iwork[i] = i;
           }
           
-          nfe = 0
+          this.nfe = 0
           this.nfxe = 1
           this.ftest = 0
           cmode = false
           this.initx = true
-          this.evalf(f,0,iwork,dum,n,x,sfx,nfe)
+          this.evalf(f,0,iwork,dum,n,x,sfx,this.nfe)
           this.initx = false
           
           goto_variable = 40;
@@ -189,7 +189,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // continue
           //
 
-          this.simplx(f,n,work[istptr],ns,iwork[ipptr],maxnfe,cmode,x,sfx,nfe,work[isptr],work[ifsptr],iflag)
+          this.simplx(f,n,work,istptr,ns,iwork,ipptr,maxnfe,cmode,x,sfx,nfe,isptr,ifsptr,iflag)
           cmode = false
           if (iflag !== 0){
             goto_variable = 110

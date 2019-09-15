@@ -1,4 +1,4 @@
-let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
+let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
     let i,icent,ih,il,inew,is,itemp,j,npts
     let dist,dum,fc,fe,fr,tol
     let small,updatc
@@ -20,7 +20,7 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             icent = ns+2
             itemp = ns+3
             updatc = false
-            this.start(n,x,step,ns,ips,s,small)
+            this.start(n,x,w,step,ns,iw,ips,s,small)
             if (small){
                iflag = 1
                return
