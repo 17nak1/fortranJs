@@ -56,14 +56,14 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
     eqbase = true
     eqold = true
     if (nnew){
-        for(i = 0; i< ns; i++){
+        for(i = 1; i<= ns; i++){
             xnew[i] = xbase[i]+coef*(xbase[i]-xold[i])
             eqbase = eqbase && (xnew[i] === xbase[i])
             eqold = eqold && (xnew[i] === xold[i])
         }
     }
     else{
-        for(i = 0; i< ns; i++){
+        for(i = 1; i<= ns; i++){
             xoldi = xold[i]
             xold[i] = xbase[i]+coef*(xbase[i]-xold[i])
             eqbase = eqbase && (xold[i] === xbase[i])
