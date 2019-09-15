@@ -6,7 +6,7 @@ let f = function (x) {
 }
 
  
-      x0=c(11,-33)
+      x0=[ 11,-33]
       n= x0.length
       tol= 2.220446e-16
       maxnfe=10000

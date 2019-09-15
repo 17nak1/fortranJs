@@ -82,7 +82,7 @@
 //       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-
+  let alpha,beta,gamma,delta,psi,omega,nsmin,nsmax,nfxe,initx,fxstat = [],ftest//global
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
   let bnsfa = [[-1,-2,0],[1,0,2]];
   let dum,scl,sfx,xpscl;
