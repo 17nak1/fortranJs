@@ -8,8 +8,8 @@ let run = function(){
         }
     }
     this.n = this.x0.length;
-    this.work = new Array(this.n).fill(Array((this.n+6)+1))
-    this.iwork = new Array(2).fill(Array(this.n))
+    this.work = new Array(this.n*(this.n+6)+1)
+    this.iwork = new Array(2*this.n)
 
     this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale,this.x0,this.fx,this.nfe,this.work,this.iwork,this.iflag)
 

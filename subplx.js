@@ -84,7 +84,7 @@
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
   let bnsfa = [[-1,-2,0],[1,0,2]];
-  let dum,scl,sfx,xpscl;
+  let dum,scl = [],sfx,xpscl;
   let cmode;
 
   let goto_variable = 10;
@@ -109,9 +109,9 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             //
             //20
             //
-            scl = Math.abs(scale[0])
+            scl[0] = Math.abs(scale[0])
             for( i = 0; i < n; i++){
-              xpscl = x[i]+scl;
+              xpscl = x[i]+scl[0];
               if (xpscl === x[i]){
                 goto_variable = 120;
                 break;
@@ -129,12 +129,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           ifsptr = isptr + this.nsmax * (this.nsmax + 3)
           insptr = n
           if (scale[0] > 0){
-            this.dcopy(n,scale,1,work,1)
-            this.dcopy(n,scale,1,work[istptr],1)
+            this.dcopy(n,scale,0,1,work,0,1)
+            this.dcopy(n,scale,0,1,work,istptr,1)
           }
           else{
-            this.dcopy(n,scl,0,work,1)
-            this.dcopy(n,scl,0,work[istptr],1)
+            this.dcopy(n,scl,0,0,work,0,1)
+            this.dcopy(n,scl,0,0,work,istptr,1)
           }
 
           //
@@ -170,7 +170,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           }
           this.sortd(n,work,iwork)
           this.partx(n,iwork,work,nsubs,iwork[insptr])
-          this.dcopy(n,x,1,work,1)
+          this.dcopy(n,x,0,1,work,0,1)
           ins = insptr
           insfnl = insptr + nsubs - 1
           ipptr = 0
