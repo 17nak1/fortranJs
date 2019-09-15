@@ -35,7 +35,6 @@ subplex.calcc = require('./calcc.js')
 
 subplex.subopt = require('./subopt.js')
 
-subplex.evalf = require('./evalf.js')
 subplex.sortd = require('./sortd.js')
 subplex.partx = require('./partx.js')
 subplex.setstp = require('./setstp.js')

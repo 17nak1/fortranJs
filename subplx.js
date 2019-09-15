@@ -189,7 +189,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // continue
           //
 
-          simplx(f,n,work[istptr],ns,iwork[ipptr],maxnfe,cmode,x,sfx,nfe,work[isptr],work[ifsptr],iflag)
+          this.simplx(f,n,work[istptr],ns,iwork[ipptr],maxnfe,cmode,x,sfx,nfe,work[isptr],work[ifsptr],iflag)
           cmode = false
           if (iflag !== 0){
             goto_variable = 110

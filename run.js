@@ -7,7 +7,7 @@ let run = function(){
             this.scale[i] = Math.abs(this.scale[i]);
         }
     }
-    this.n = this.x0.length;
+    this.n = this.x0.length - 1 ;
     this.work = new Array((this.n+1)*(this.n+7)+1)
     this.iwork = new Array(2*(this.n+1))
 
