@@ -5,7 +5,7 @@ let evalf = function(f,ns,ips,xs,n,x,sfx,nfe){
     }
 
       fx = f(n,x)
-      sfx.out = fx
+      sfx[1] = fx
       this.nfe = this.nfe+1
 }
 

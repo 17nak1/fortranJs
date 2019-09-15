@@ -59,7 +59,7 @@ let partx = function(n,ip,absdx,nsubs,nsvals,snsvals){
         }
       }
       else if (as1/ns1 > gapmax){
-        nsvals[snsvals+nsubs.out] = ns1
+        nsvals[snsvals+nsubs.out - 1] = ns1
         return 0;
       }
     }
