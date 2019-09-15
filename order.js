@@ -29,7 +29,7 @@
 let order  = function(npts,fs,il,is,ih){
     let i,il0,j
     il0 = il
-    j = il0 + npts * Math.floor(il0 / npts) + 1//Math.mod(il0,npts) + 1
+    j = Math.mod(il0,npts) + 1//il0 + npts * Math.floor(il0 / npts) + 1//
     if (fs[j] >= fs[il]){
         ih = j
         is = il0
@@ -40,7 +40,7 @@ let order  = function(npts,fs,il,is,ih){
         il = j
     }
 
-    for( i =il0 ; i< il0+npts-1; i++){      
+    for( i =il0 ; i<= il0+npts-2; i++){      
         j = i + npts * Math.floor(i / npts) //Math.mod(i,npts)+1
         if (fs[j] >= fs[ih]){
           is = ih
