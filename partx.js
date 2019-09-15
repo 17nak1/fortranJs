@@ -27,43 +27,43 @@
 
 // WE need to define these global; common /usubc/ alpha,beta,gamma,delta,psi,omega,nsmin,nsmax,irepl,ifxsw,bonus,fstop,nfstop,nfxe,fxstat(4),ftest,minf,initx,newx
 
-let partx = function(n,ip,absdx,nsubs,nsvals){
+let partx = function(n,ip,absdx,nsubs,nsvals,snsvals){
   let i,nleft,ns1,ns2,nused;
   let asleft,as1,as1max,as2,gap,gapmax;
-  nsubs = 0
+  nsubs.out = 0
   nused = 0
   nleft = n
-  asleft = absdx[1];
+  asleft = absdx[0];
   for(i = 1; i < n ; i++){
     asleft = asleft+absdx[i]
   }
   while(nused < n){
-    nsubs = nsubs+1
+    nsubs.out = nsubs.out+1
     as1 = 0
-    for(i = 0; i < nsmin-1; i++){
+    for(i = 0; i < this.nsmin-1; i++){
       as1 = as1+absdx[ip[nused+i]]
     }
     gapmax = -1
-    for(ns1 = nsmin-1; ns1 < Math.min(nsmax,nleft); ns1++){
+    for(ns1 = this.nsmin-1; ns1 < Math.min(this.nsmax,nleft); ns1++){
       as1 = as1+absdx[ip[nused+ns1]]
       ns2 = nleft-ns1
       if (ns2 > 0){
-        if (ns2 >= ((ns2-1)/nsmax+1)*nsmin){
+        if (ns2 >= ((ns2-1)/this.nsmax+1)*this.nsmin){
           as2 = asleft-as1
           gap = as1/ns1-as2/ns2
           if (gap > gapmax){
             gapmax = gap
-            nsvals[nsubs] = ns1
+            nsvals[snsvals+nsubs.out] = ns1
             as1max = as1
           }
         }
       }
       else if (as1/ns1 > gapmax){
-        nsvals[nsubs] = ns1
+        nsvals[snsvals+nsubs.out] = ns1
         return 0;
       }
     }
-    nused = nused+nsvals[nsubs]
+    nused = nused+nsvals[snsvals+nsubs.out]
     nleft = n-nused
     asleft = asleft-as1max
   }

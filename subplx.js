@@ -82,7 +82,7 @@
 //       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
+  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs={};
   let bnsfa = [[-1,-2,0],[1,0,2]];
   let dum,scl = [],sfx = {},xpscl;
   let cmode;
@@ -169,10 +169,10 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             work[i] = Math.abs(work[i]);
           }
           this.sortd(n,work,iwork)
-          this.partx(n,iwork,work,nsubs,iwork[insptr])
+          this.partx(n,iwork,work,nsubs,iwork,insptr)
           this.dcopy(n,x,0,1,work,0,1)
           ins = insptr
-          insfnl = insptr + nsubs - 1
+          insfnl = insptr + nsubs.out - 1
           ipptr = 0
 
           goto_variable = 60;
