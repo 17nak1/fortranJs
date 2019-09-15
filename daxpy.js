@@ -28,7 +28,7 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
     m = n- 4 * Math.floor(n / 4)
     if( m === 0 ) {
       mp1 = m + 1
-      for (let i = mp1 - 1; i < n; i +=4) {
+      for (let i = mp1; i <= n; i +=4) {
         dy[i] = dy[i] + da*dx[i]
         dy[i + 1] = dy[i + 1] + da*dx[i + 1]
         dy[i + 2] = dy[i + 2] + da*dx[i + 2]
@@ -36,7 +36,7 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
       }
       return dy
     } else {
-      for (let i = 0; i < m; i++) {
+      for (let i = 1; i <= m; i++) {
         dy[i] = dy[i] + da*dx[i]
       }
       if( n < 4 ) return dy

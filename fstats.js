@@ -21,23 +21,23 @@ let fstats = function (fx,ifxwt,reset) {
   let fxstat =[]
     if (reset) {
       nfxe = ifxwt
-      fxstat[0] = fx
       fxstat[1] = fx
       fxstat[2] = fx
-      fxstat[3] = 0
+      fxstat[3] = fx
+      fxstat[4] = 0
     } else {
       nsv = nfxe
-      f1sv = fxstat[0]
+      f1sv = fxstat[1]
       nfxe = nfxe + ifxwt
-      fxstat[0] = fxstat[0] + ifxwt * (fx - fxstat[0]) / nfxe
-      fxstat[1] = Math.max(fxstat[1], fx)
-      fxstat[2] = Math.min(fxstat[2], fx)
-      fscale = Math.max(Math.abs(fxstat[1]),Math.abs(fxstat[2]),1)
-      fxstat[3] = fscale * Math.sqrt(((nsv-1)*(fxstat[3]/fscale)**2+
-                            nsv*((fxstat[0]-f1sv)/fscale)**2+
-                            ifxwt*((fx-fxstat[0])/fscale)**2) / (nfxe-1))
+      fxstat[1] = fxstat[1] + ifxwt * (fx - fxstat[1]) / nfxe
+      fxstat[2] = Math.max(fxstat[2], fx)
+      fxstat[3] = Math.min(fxstat[3], fx)
+      fscale = Math.max(Math.abs(fxstat[2]),Math.abs(fxstat[3]),1)
+      fxstat[4] = fscale * Math.sqrt(((nsv-1)*(fxstat[4]/fscale)**2+
+                            nsv*((fxstat[1]-f1sv)/fscale)**2+
+                            ifxwt*((fx-fxstat[1])/fscale)**2) / (nfxe-1))
     }
-    console.log(nfxe,fxstat)
+    // console.log(nfxe,fxstat)
     return 0
   }
   

@@ -37,17 +37,17 @@ dscal= require('./dscal.js')
 let calcc = function(ns,s,ih,inew,updatc,c) {
     if (updatc) {
       if (ih === inew) return 0
-      for(let i = 0; i < ns; i++) {
+      for(let i = 1; i <= ns; i++) {
         c[i] = c[i] + (s[i][inew] - s[i][ih]) / ns
       }
     } else {
-      dcopy (ns,[0],0,c,1)
-      for(let j = 0; j < ns + 1 ; j++) {
+      this.dcopy (ns,0,0,0,c,,0,1)
+      for(let j = 1; j <= ns + 1 ; j++) {
         if (j !== ih) {
-          daxpy (ns,1,[s[1][j]],1,c,1)      
+          this.daxpy (ns,1,[s[1][j]],1,c,1)      
         }
       }
-      dscal (ns,1/ns,c,1) 
+      this.dscal (ns,1/ns,c,1) 
     }
   console.log(c)  
 } 

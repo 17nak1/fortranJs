@@ -1,6 +1,6 @@
 let evalf = function(f,ns,ips,xs,n,x,sfx,nfe){
     let i,fx;
-    for(i = 0; i< ns; i++){
+    for(i = 1; i<= ns; i++){
         x[ips[i]] = xs[i]
     }
 

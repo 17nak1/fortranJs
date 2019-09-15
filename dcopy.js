@@ -25,7 +25,7 @@ let dcopy = function(n,dx,sx,incx,dy,sy,incy) {
         m = n - 7 * Math.floor(n / 7)
         if( m === 0 ) {
           mp1 = m + 1
-          for (let i = mp1 -1; i < n; i += 7) {
+          for (let i = mp1; i <= n; i += 7) {
             dy[sy + i] = dx[sx + i]
             dy[sy + i + 1] = dx[sx + i + 1]
             dy[sy + i + 2] = dx[sx + i + 2]
@@ -36,7 +36,7 @@ let dcopy = function(n,dx,sx,incx,dy,sy,incy) {
           }
           return dy
         }
-        for(i = 0; i < m; i++) {
+        for(i = 1; i <= m; i++) {
           dy[sy + i] = dx[sx + i]
         }
         if( n  <  7 ) return dy
@@ -45,7 +45,7 @@ let dcopy = function(n,dx,sx,incx,dy,sy,incy) {
       iy = 0
       if(incx < 0) ix = (-n+1)*incx + 1
       if(incy < 0) iy = (-n+1)*incy + 1
-      for (let i = 0; i < n; i++) {
+      for (let i = 1; i <= n; i++) {
         dy[sy + iy] = dx[sx + ix]
         ix = ix + incx
         iy = iy + incy

@@ -16,7 +16,6 @@
 */
 
 let dasum =  function (n, dx, incx) {
-  console.log(incx)
   das = 0
   dtemp = 0
   if(n < 0) return 0
@@ -24,11 +23,11 @@ let dasum =  function (n, dx, incx) {
      m = n - 6 * Math.floor(n / 6)
     if( m === 0 ) {//40
       mp1 = m + 1
-      for(let i = mp1 - 1; i < n; i += 6) {
+      for(let i = mp1; i <= n; i += 6) {
         dtemp = dtemp + Math.abs(dx[i]) + Math.abs(dx[i + 1]) + Math.abs(dx[i + 2]) + Math.abs(dx[i + 3]) + Math.abs(dx[i + 4]) + Math.abs(dx[i + 5])
       }
     } 
-    for(let i = 0; i < m; i++) {
+    for(let i = 1; i <= m; i++) {
       dtemp = dtemp + Math.abs(dx[i])
     }
     if( n < 6 ) {//60
