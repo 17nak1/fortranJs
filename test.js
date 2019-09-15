@@ -1,26 +1,26 @@
 let abji = require('./subplex.js');
 
-//console.log(abji.calcc(2,1,[2,4],1, [2,2],1))
-console.log(abji.dasum(2,1,[2,4],1, [2,2],1))
-console.log(abji.daxpy(2,1,[2,4],1, [2,2],1))
-console.log(abji.dcopy(2,[2,4],1, [2,2],1))
-console.log(abji.dist(2,1,[2,4],1, [2,2],1))
-console.log(abji.dscal(2,1,[2,4],1, [2,2],1))
+// //console.log(abji.calcc(2,1,[2,4],1, [2,2],1))
+// console.log(abji.dasum(2,1,[2,4],1, [2,2],1))
+// console.log(abji.daxpy(2,1,[2,4],1, [2,2],1))
+// console.log(abji.dcopy(2,[2,4],1, [2,2],1))
+// console.log(abji.dist(2,1,[2,4],1, [2,2],1))
+// console.log(abji.dscal(2,1,[2,4],1, [2,2],1))
 
-var evalfout = {};
-console.log(abji.evalf((n,x) => x.length * n ,3,[1,2,3],[1,2,3],2,[1,2,3], evalfout,0)) //amir
+// var evalfout = {};
+// console.log(abji.evalf((n,x) => x.length * n ,3,[1,2,3],[1,2,3],2,[1,2,3], evalfout,0)) //amir
  
-console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
-// console.log(abji.newpt(2,1,[2,4],1, [2,2],1))
-// console.log(abji.order(2,1,[2,4],1, [2,2],1))
-// console.log(abji.partx(2,1,[2,4],1, [2,2],1))
-// console.log(abji.setstp(2,1,[2,4],1, [2,2],1))
-// console.log(abji.simplx(2,1,[2,4],1, [2,2],1))
-console.log(abji.sortd(2,1,[2,4],1, [2,2],1))   
-// console.log(abji.start(2,1,[2,4],1, [2,2],1))
-console.log(abji.subopt(2)) /** ok Amir */
-// console.log(abji.subplex(2,1,[2,4],1, [2,2],1))
-// console.log(abji.subplx(2,1,[2,4],1, [2,2],1))
+// console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
+// // console.log(abji.newpt(2,1,[2,4],1, [2,2],1))
+// // console.log(abji.order(2,1,[2,4],1, [2,2],1))
+// // console.log(abji.partx(2,1,[2,4],1, [2,2],1))
+// // console.log(abji.setstp(2,1,[2,4],1, [2,2],1))
+// // console.log(abji.simplx(2,1,[2,4],1, [2,2],1))
+// console.log(abji.sortd(2,1,[2,4],1, [2,2],1))   
+// // console.log(abji.start(2,1,[2,4],1, [2,2],1))
+// console.log(abji.subopt(2)) /** ok Amir */
+// // console.log(abji.subplex(2,1,[2,4],1, [2,2],1))
+// // console.log(abji.subplx(2,1,[2,4],1, [2,2],1))
 
 
 
@@ -42,7 +42,7 @@ console.log(abji.subopt(2)) /** ok Amir */
 // mdsing = 0;
 // mode = 4 * mdsing + 2 * mduser + mdcont;
 
-abji.f = function (x) {  
+abji.f = function (n,x) {  
       let x1, x2
       x1 = x[0]
       x2 = x[1]

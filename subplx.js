@@ -84,7 +84,7 @@
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
   let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs;
   let bnsfa = [[-1,-2,0],[1,0,2]];
-  let dum,scl = [],sfx,xpscl;
+  let dum,scl = [],sfx = {},xpscl;
   let cmode;
 
   let goto_variable = 10;
@@ -253,7 +253,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
           // 110
           //
-          fx = sfx
+          fx = sfx.out
           return 0;
         break;
 
