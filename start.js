@@ -1,4 +1,4 @@
-let start = function(n,x,step,ns,ips,s,small){
+let start = function(n,x,w,step,ns,iw,ips,s,small){
     let i,j
     for(i = 1; i<= ns; i++){
         s.set(x.get(ips.get(i)),i,1) ;

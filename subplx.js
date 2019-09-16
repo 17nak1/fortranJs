@@ -145,12 +145,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             iwork.set(i,i);
           }
           
-          nfe = 0
+          this.nfe = 0
           this.nfxe = 1
           this.ftest = 0
           cmode = false
           this.initx = true
-          this.evalf(f,0,iwork,dum,n,x,sfx,nfe)
+          this.evalf(f,0,iwork,dum,n,x,sfx,this.nfe)
           this.initx = false
           
           goto_variable = 40;

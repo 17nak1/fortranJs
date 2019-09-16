@@ -30,9 +30,6 @@
 *  @references   Tom Rowan, Department of Computer Sciences, University of Texas at Austin
 *                https://www.netlib.org/opt/
 */
-dcopy = require('./dcopy.js')
-daxpy = require('./daxpy.js')
-dscal= require('./dscal.js')
 
 let calcc = function(ns,s,ih,inew,updatc,c) {
     if (updatc.get()) {
