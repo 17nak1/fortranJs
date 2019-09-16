@@ -32,32 +32,32 @@ let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
 
             il = 1
             this.order(npts,fs,il,is,ih)
-            tol = psi*this.dist(ns,s[1,ih],s[1,il])
+            tol = psi*this.dist(ns,s[1][ih],s[1][il])
             goto_variable = 20;
          break;
          case 20: // 20
-            this.calcc (ns,s,ih,inew,updatc,s[1,icent])
+            this.calcc (ns,s,ih,inew,updatc,s[1][icent])
             updatc = true
             inew = ih
-            this.newpt(ns,alpha,s[1,icent],s[1,ih],true,s[1,itemp],small)
+            this.newpt(ns,alpha,s[1][icent],s[1][ih],true,s[1][itemp],small)
             goto_variable = 40; // 40
             if (small){
                break;
             }
 
-            this.evalf (f,ns,ips,s[1,itemp],n,x,fr,nfe)
+            this.evalf (f,ns,ips,s[1][itemp],n,x,fr,nfe)
             if (fr < fs[il]){  
-               this.newpt(ns,-gamma,s[1,icent],s[1,itemp],true,s[1,ih],small)
+               this.newpt(ns,-gamma,s[1][icent],s[1][itemp],true,s[1][ih],small)
                goto_variable = 40; // 40
                if (small){
                   break;
                }
-               this.evalf (f,ns,ips,s[1,ih],n,x,fe,nfe)
+               this.evalf (f,ns,ips,s[1][ih],n,x,fe,nfe)
                if (fe < fr){
                   fs[ih] = fe
                }
                else{
-                  this.dcopy(ns,s[1,itemp],1,s[1,ih],1)
+                  this.dcopy(ns,s[1][itemp],1,s[1][ih],1)
                   fs[ih] = fr
                }
             }
@@ -67,16 +67,16 @@ let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             }
             else{
                if (fr .gt. fs(ih)){
-                  this.newpt(ns,-beta,s[1,icent],s[1,ih],true,s[1,itemp],small)
+                  this.newpt(ns,-beta,s[1][icent],s[1][ih],true,s[1][itemp],small)
                }
                else{
-                  this.newpt(ns,-beta,s[1,icent],s[1,itemp],false,dum,small)
+                  this.newpt(ns,-beta,s[1][icent],s[1][itemp],false,dum,small)
                }     
                goto_variable = 40; // 40
                if (small){
                   break;
                }
-               this.evalf (f,ns,ips,s[1,itemp],n,x,fc,nfe)
+               this.evalf (f,ns,ips,s[1][itemp],n,x,fc,nfe)
                if (fc < Math.min(fr,fs[ih])){
                   this.dcopy(ns,s[1],itemp,1,s[1],ih,1)
                   fs[ih] = fc
@@ -84,12 +84,12 @@ let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
                else{
                      for(j = 1; j<= npts; j++){          
                         if (j !== il){
-                           this.newpt(ns,-delta,s[1,il],s[1,j],false,dum,small)
+                           this.newpt(ns,-delta,s[1][il],s[1][j],false,dum,small)
                            goto_variable = 40; // 40
                            if (small){
                               break;
                            }
-                           this.evalf(f,ns,ips,s[1,j],n,x,fs[j],nfe)
+                           this.evalf(f,ns,ips,s[1][j],n,x,fs[j],nfe)
                         }
                      }
                }   
@@ -106,7 +106,7 @@ let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             if (nfe >= maxnfe){
                iflag = -1
             }
-            else if (this.dist(ns,s[1,ih],s[1,il]) <= tol || small){
+            else if (this.dist(ns,s[1][ih],s[1][il]) <= tol || small){
                iflag = 0
             }
             else{
@@ -115,7 +115,7 @@ let simplx = function(f,n,w,step,ns,iw,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             }
 
             for(i= 0 ; i< ns; i++){
-               x[ips[i]] = s[i,il]
+               x[ips[i]] = s[i][il]
             }
          break;
       }
