@@ -70,9 +70,8 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
             eqold = eqold && (xold.get(i) === xold.get(i))
          }
         }
-    small.set(eqbase || eqold)
+    small = eqbase || eqold
     // console.log(xold,xnew,small)
 }
 
 module.exports = newpt;
-// newpt(2,2,[1,2],[1,2],true,[1,1],true)

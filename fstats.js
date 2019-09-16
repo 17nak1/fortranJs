@@ -17,27 +17,26 @@
 */
 
 let fstats = function (fx,ifxwt,reset) {
-  let nfxe, nsv
-  let fxstat =[]
+    let nsv
     if (reset) {
-      nfxe = ifxwt
-      fxstat[1] = fx
-      fxstat[2] = fx
-      fxstat[3] = fx
-      fxstat[4] = 0
+      this.nfxe = ifxwt
+      this.fxstat[1] = fx
+      this.fxstat[2] = fx
+      this.fxstat[3] = fx
+      this.fxstat[4] = 0
     } else {
-      nsv = nfxe
-      f1sv = fxstat[1]
-      nfxe = nfxe + ifxwt
-      fxstat[1] = fxstat[1] + ifxwt * (fx - fxstat[1]) / nfxe
-      fxstat[2] = Math.max(fxstat[2], fx)
-      fxstat[3] = Math.min(fxstat[3], fx)
-      fscale = Math.max(Math.abs(fxstat[2]),Math.abs(fxstat[3]),1)
-      fxstat[4] = fscale * Math.sqrt(((nsv-1)*(fxstat[4]/fscale)**2+
-                            nsv*((fxstat[1]-f1sv)/fscale)**2+
-                            ifxwt*((fx-fxstat[1])/fscale)**2) / (nfxe-1))
+      nsv = this.nfxe
+      f1sv = this.fxstat[1]
+      this.nfxe = this.nfxe + ifxwt
+      this.fxstat[1] = this.fxstat[1] + ifxwt * (fx - this.fxstat[1]) / this.nfxe
+      this.fxstat[2] = Math.max(this.fxstat[2], fx)
+      this.fxstat[3] = Math.min(this.fxstat[3], fx)
+      fscale = Math.max(Math.abs(this.fxstat[2]),Math.abs(this.fxstat[3]),1)
+      this.fxstat[4] = fscale * Math.sqrt(((nsv-1)*(this.fxstat[4]/fscale)**2+
+                            nsv*((this.fxstat[1]-f1sv)/fscale)**2+
+                            ifxwt*((fx-this.fxstat[1])/fscale)**2) / (this.nfxe-1))
     }
-    // console.log(nfxe,fxstat)
+    // console.log(this.nfxe,this.fxstat)
     return 0
   }
   
