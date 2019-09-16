@@ -1,24 +1,24 @@
 let abji = require('./subplex.js');
 
-// //console.log(abji.calcc(2,1,[2,4],1, [2,2],1))
-// console.log(abji.dasum(2,1,[2,4],1, [2,2],1))
-// console.log(abji.daxpy(2,1,[2,4],1, [2,2],1))
-// console.log(abji.dcopy(2,[2,4],1, [2,2],1))
-// console.log(abji.dist(2,1,[2,4],1, [2,2],1))
-// console.log(abji.dscal(2,1,[2,4],1, [2,2],1))
+console.log("calcc",abji.calcc(1,[-1,0,1,0].darr(1,1,4),2,1,false,[0,1].darr()))
+console.log("dasum", abji.dasum(2,[-2,4].darr(),1))
+console.log("daxpy",abji.daxpy(2,-1,[2,4].darr(),1, [2,2].darr(),1))
+console.log("dcopy",abji.dcopy(2,[1].darr(),0, [2,2].darr(2),1))
+console.log("dist",abji.dist(2,[2,4].darr(),[2,2].darr()))
+console.log("dscal",abji.dscal(2,2,[2,4].darr(),1))
 
 // var evalfout = {};
 // console.log(abji.evalf((n,x) => x.length * n ,3,[1,2,3],[1,2,3],2,[1,2,3], evalfout,0)) //amir
  
-// console.log(abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
-// // console.log(abji.newpt(2,1,[2,4],1, [2,2],1))
-// // console.log(abji.order(2,1,[2,4],1, [2,2],1))
+console.log("fstats",abji.fstats(2,0, true))                    // 0 [ 2, 2, 2, 0 ]
+console.log("newpt",abji.newpt(2,2,[1,2].darr(),[1,-2].darr(),true,[1,1].darr(),true))
+console.log("order",abji.order(2,[1,2].darr(),[1].darr(),[].darr(),[].darr()))
 // // console.log(abji.partx(2,1,[2,4],1, [2,2],1))
 // // console.log(abji.setstp(2,1,[2,4],1, [2,2],1))
 // // console.log(abji.simplx(2,1,[2,4],1, [2,2],1))
-// console.log(abji.sortd(2,1,[2,4],1, [2,2],1))   
+console.log("sortd",abji.sortd(3,[2,-4, 7].darr(),[1,2,3].darr()))   
 // // console.log(abji.start(2,1,[2,4],1, [2,2],1))
-// console.log(abji.subopt(2)) /** ok Amir */
+console.log(abji.subopt(2)) /** ok Amir */
 // // console.log(abji.subplex(2,1,[2,4],1, [2,2],1))
 // // console.log(abji.subplx(2,1,[2,4],1, [2,2],1))
 
@@ -50,4 +50,4 @@ abji.f = function (n,x) {
 }
 abji.x0 = [11,-33];
 
-abji.run()
+// abji.run()

@@ -75,3 +75,4 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
 }
 
 module.exports = newpt;
+
