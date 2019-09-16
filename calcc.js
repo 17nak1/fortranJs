@@ -31,24 +31,23 @@
 *                https://www.netlib.org/opt/
 */
 
-let calcc = function(ns,s,ih,inew,updatc,c) {
-    if (updatc.get()) {
-      if (ih.get() === inew) return 0
+let calcc = function(ns,s,ih,inew,updatc,c) { 
+    if (updatc) {
+      if (ih === inew) return 0
       for(let i = 1; i <= ns; i++) {
-        c.set(c.get(i) + (s.get(i,inew) - s(i,ih.get)) / ns,i)
+        c.set(c.get(i) + (s.get(i,inew) - s(i,ih)) / ns,i)
       }
     } else {
       this.dcopy (ns,[0].darr(),0,c,1)
       for(let j = 1; j <= ns + 1 ; j++) {
-        if (j !== ih.get()) {
+        if (j !== ih) {
           this.daxpy (ns,1,s.clone((j-1)*ns+1),1,c,1)      
         }
       }
       this.dscal (ns,1/ns,c,1) 
     }
-  console.log(c)  
+  return 0  
 } 
 
 module.exports = calcc;
 
-// calcc(1,[[-1,0],[1,0], [0,2]],2,1,false,[0,1])
