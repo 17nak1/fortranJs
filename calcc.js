@@ -30,12 +30,11 @@
 *  @references   Tom Rowan, Department of Computer Sciences, University of Texas at Austin
 *                https://www.netlib.org/opt/
 */
-
-let calcc = function(ns,s,ih,inew,updatc,c) { 
+let calcc = function(ns,s,ih,inew,updatc,c) {
     if (updatc) {
       if (ih === inew) return 0
       for(let i = 1; i <= ns; i++) {
-        c.set(c.get(i) + (s.get(i,inew) - s(i,ih)) / ns,i)
+        c.set(c.get(i) + (s.get(i,inew) - s.get(i,ih)) / ns,i)
       }
     } else {
       this.dcopy (ns,[0].darr(),0,c,1)
@@ -46,7 +45,7 @@ let calcc = function(ns,s,ih,inew,updatc,c) {
       }
       this.dscal (ns,1/ns,c,1) 
     }
-  return 0  
+  console.log(c)  
 } 
 
 module.exports = calcc;
