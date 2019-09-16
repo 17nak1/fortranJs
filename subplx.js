@@ -234,7 +234,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
           for( i = 1; i <= n; i++){
             if (Math.max(Math.abs(work.get(i)),Math.abs(work.get(istep)* this.psi)) / Math.max(Math.abs(x.get(i)),1) > tol){
-              this.setstp(nsubs,n,work,work.clone(stptr));
+              this.setstp(nsubs,n,work,work.clone(istptr));
               goto_variable = 40;
               break;
             }

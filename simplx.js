@@ -2,7 +2,7 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
     let i,icent,ih = [].darr(),il = [].darr(),inew,is = [].darr(),itemp,j,npts
     let dist,dum = [].darr(),fc,fe,fr = [].darr(),tol
     let small = [].darr(),updatc = [].darr()
-
+    s = s.clone(1,ns,ns+3);
     let goto_variable = 0;
     while (true)
     {
