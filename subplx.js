@@ -82,9 +82,9 @@
 //       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs={};
-  let bnsfa = [[0,0,0,0],[0,-1,-2,0],[0,1,0,2]];
-  let dum,scl = [],sfx = {},xpscl;
+  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs=[].darr();
+  let bnsfa = [[-1,-2,0],[1,0,2]];
+  let dum ,scl = [].darr(),sfx = [].darr(),xpscl = [].darr();
   let cmode;
 
   let goto_variable = 10;
@@ -93,13 +93,13 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
       switch (goto_variable){
         case 10:
           goto_variable = 15;
-          if(scale[1] >= 0){
+          if(scale.get(1) >= 0){
             //
             // 10
             //
             for( i = 1; i <= n; i++){
-              xpscl = x[i]+scale[i];
-              if (xpscl === x[i]){
+              xpscl = x.get(i)+scale.get(i);
+              if (xpscl === x.get(i)){
                  goto_variable = 120;
                  break;
               }
@@ -109,10 +109,10 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             //
             //20
             //
-            scl[1] = Math.abs(scale[1])
+            scl.set(Math.abs(scale.get(1)))
             for( i = 1; i <= n; i++){
-              xpscl = x[i]+scl[1];
-              if (xpscl === x[i]){
+              xpscl = x.get(i)+scl.get();
+              if (xpscl === x.get(i)){
                 goto_variable = 120;
                 break;
               }
@@ -127,14 +127,14 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           istptr = n + 1
           isptr = istptr + n;
           ifsptr = isptr + this.nsmax * (this.nsmax + 3)
-          insptr = n
-          if (scale[1] > 0){
-            this.dcopy(n,scale,1,1,work,1,1)
-            this.dcopy(n,scale,1,1,work,istptr,1)
+          insptr = n + 1
+          if (scale.get() > 0){
+            this.dcopy(n,scale,1,work,1)
+            this.dcopy(n,scale,1,work.clone(istptr),1)
           }
           else{
-            this.dcopy(n,scl,1,0,work,1,1)
-            this.dcopy(n,scl,1,0,work,istptr,1)
+            this.dcopy(n,scl,0,work,1)
+            this.dcopy(n,scl,0,work.clone(istptr),1)
           }
 
           //
@@ -142,7 +142,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            iwork[i] = i;
+            iwork.set(i,i);
           }
           
           nfe = 0
@@ -166,13 +166,13 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            work[i] = Math.abs(work[i]);
+            work.set(Math.abs(work.get(i)),i)
           }
           this.sortd(n,work,iwork)
-          this.partx(n,iwork,work,nsubs,iwork,insptr)
-          this.dcopy(n,x,1,1,work,1,1)
+          this.partx(n,iwork,work,nsubs,iwork.clone(insptr))
+          this.dcopy(n,x,1,work,1)
           ins = insptr
-          insfnl = insptr + nsubs.out - 1
+          insfnl = insptr + nsubs.get() - 1
           ipptr = 1
 
           goto_variable = 60;
@@ -184,12 +184,12 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // 60
           //
 
-          ns = iwork[ins]
+          ns = iwork.get(ins)
           //
           // continue
           //
 
-          this.simplx(f,n,work[istptr],ns,iwork[ipptr],maxnfe,cmode,x,sfx,nfe,work[isptr],work[ifsptr],iflag)
+          this.simplx(f,n,work.clone(istptr),ns,iwork.clone(ipptr),maxnfe,cmode,x,sfx,nfe,work.clone(isptr),work.clone(ifsptr),iflag)
           cmode = false
           if (iflag !== 0){
             goto_variable = 110
@@ -217,7 +217,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            work[i] = x[i] - work[i];
+            work.set(x.get(i) - work.get(i),i)
           }
 
           //
@@ -233,8 +233,8 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // 100
           //
           for( i = 1; i <= n; i++){
-            if (Math.max(Math.abs(work[i]),Math.abs(work[istep])* this.psi) / Math.max(Math.abs(x[i]),1) > tol){
-              this.setstp(nsubs,n,work,work[istptr]);
+            if (Math.max(Math.abs(work.get(i)),Math.abs(work.get(istep)* this.psi)) / Math.max(Math.abs(x.get(i)),1) > tol){
+              this.setstp(nsubs,n,work,work.clone(stptr));
               goto_variable = 40;
               break;
             }

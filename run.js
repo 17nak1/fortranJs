@@ -1,17 +1,17 @@
 let run = function(){
-    if(this.scale.length === 2){
-        this.scale[1] = -Math.abs(this.scale[1]);
+    if(this.scale.length === 1){
+        this.scale[0] = -Math.abs(this.scale[0]);
     }
     else{
-        for(let i = 1; i<= this.scale.length-1; i++){
+        for(let i = 0; i< this.scale.length; i++){
             this.scale[i] = Math.abs(this.scale[i]);
         }
     }
-    this.n = this.x0.length - 1 ;
-    this.work = new Array((this.n+1)*(this.n+7)+1)
-    this.iwork = new Array(2*(this.n+1))
+    this.n = this.x0.length ;
+    this.work = new Array((this.n)*(this.n+6)+1)
+    this.iwork = new Array(2*(this.n))
 
-    this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale,this.x0,this.fx,this.nfe,this.work,this.iwork,this.iflag)
+    this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale.darr(),this.x0.darr(),this.fx,this.nfe,this.work.darr(),this.iwork.darr(),this.iflag)
 
     switch (this.conv) {
         case -1:

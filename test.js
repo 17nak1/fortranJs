@@ -44,10 +44,10 @@ let abji = require('./subplex.js');
 
 abji.f = function (n,x) {  
       let x1, x2
-      x1 = x[1]
-      x2 = x[2]
+      x1 = x.get(1)
+      x2 = x.get(2)
       return 100*(x2-x1*x1)**2+(1-x1)**2
 }
-abji.x0 = [0,11,-33];
+abji.x0 = [11,-33];
 
 abji.run()

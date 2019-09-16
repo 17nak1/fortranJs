@@ -8,14 +8,14 @@ var subplex = {
      delta : 0.0,
      psi : 0.0,
      omega : 0.0,
-     fxstat : Array(5),
+     fxstat : Array(4),
      ftest : 0.0,
      initx : true,
 
 
      tol : 1.38777878078144568e-17,
      maxnfe : 10000,
-     scale : [0,1],
+     scale : [1],
      x0 : [],
      n : 0,
      f : {},
@@ -25,6 +25,7 @@ var subplex = {
      nfe : 0,
      iflag : 0
 }
+require('./darray.js')
 
 subplex.evalf = require('./evalf.js')
 subplex.dcopy = require('./dcopy.js')

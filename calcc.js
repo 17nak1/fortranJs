@@ -35,16 +35,16 @@ daxpy = require('./daxpy.js')
 dscal= require('./dscal.js')
 
 let calcc = function(ns,s,ih,inew,updatc,c) {
-    if (updatc) {
-      if (ih === inew) return 0
+    if (updatc.get()) {
+      if (ih.get() === inew) return 0
       for(let i = 1; i <= ns; i++) {
-        c[i] = c[i] + (s[i][inew] - s[i][ih]) / ns
+        c.set(c.get(i) + (s.get(i,inew) - s(i,ih.get)) / ns,i)
       }
     } else {
-      this.dcopy (ns,0,0,0,c,1,0)
+      this.dcopy (ns,[0].darr(),0,c,1)
       for(let j = 1; j <= ns + 1 ; j++) {
-        if (j !== ih) {
-          this.daxpy (ns,1,[s[1][j]],1,c,1)      
+        if (j !== ih.get()) {
+          this.daxpy (ns,1,s.clone((j-1)*ns+1),1,c,1)      
         }
       }
       this.dscal (ns,1/ns,c,1) 

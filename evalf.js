@@ -1,11 +1,11 @@
 let evalf = function(f,ns,ips,xs,n,x,sfx,nfe){
     let i,fx;
     for(i = 1; i<= ns; i++){
-        x[ips[i]] = xs[i]
+        x.set(xs.get(i), ips.get(i))
     }
 
       fx = f(n,x)
-      sfx.out = fx
+      sfx.set(fx)
       this.nfe = this.nfe+1
 }
 
