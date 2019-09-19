@@ -22,7 +22,7 @@ let dasum=  function (n, dx, incx) {
   let dasumm = 0
   dtemp = 0
 
-  dx = FortranIndex(dx)
+  dx = FortranIndex.array(dx)
   jump:
   while(true) {
     debugger;

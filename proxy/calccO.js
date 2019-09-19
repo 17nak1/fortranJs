@@ -37,34 +37,31 @@ dscal= require('./dscalO.js')
 
 
 let calcc = function(ns,s,ih,inew,updatc,c) {
-   let tempColumn
-  // let s(ns,ns+3),c(ns)
+  let tempColumn;
+  s = FortranIndex.matrix(s); 
+  c= FortranIndex.array(c);
+
   if (updatc) {
-    if (ih === inew) return
+    if (ih === inew) return;
     l10: for (i=1; i <= ns; i++) {
-      c[i] = c[i] + (s[i][inew]-s[i][ih])/ns
+      c[i] = c[i] + (s[i][inew]-s[i][ih])/ns;
       continue l10;
     }
   } else {
     dcopy (ns,0,0,c,1)
     l20:for(let j = 1; j <= ns+1 ;j++) {
-        tempColumn = []
-        for(let cc = 0; cc < ns; cc++) { // making s(1:ns,j)
-          tempColumn.push(s[cc][j])
-        }
-        tempColumn = FortranIndex(tempColumn)
-        if (j !== ih) daxpy(ns,1,tempColumn,1,c,1)
+        if (j !== ih) daxpy(ns,1,FortranIndex.getColumn(s,ns,j),1,c,1);
         continue l20;
     }
-    dscal (ns,1/ns,c,1)
+    dscal(ns,1/ns,c,1);
   }
   return
 }
-let ns = 1
-let c = Array(ns)
-let s = [[1,2],[3,4]]
-calcc(ns,s,1,2,true,c)
-console.log(c)
+// let ns = 2
+// let c = Array(ns).fill(0)
+// let s = [[1,2],[3,4]]
+// calcc(ns,s,1,2,true,c)
+// console.log(c)
 
 
 

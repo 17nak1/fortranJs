@@ -25,8 +25,8 @@ FortranIndex = require('./fArray.js')
 let daxpy = function(n,da,dx,incx,dy,incy) {
   let ix,iy,m,mp1
   let pc = 0;
-  dx = FortranIndex(dx);
-  dy = FortranIndex(dy);
+  dx = FortranIndex.array(dx);
+  dy = FortranIndex.array(dy);
   
   jump:
   while(true) {

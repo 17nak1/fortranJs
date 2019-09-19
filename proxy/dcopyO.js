@@ -17,8 +17,8 @@ let dcopy = function(n, dx, incx, dy, incy,ptr = 1) {
   let ix, iy, m, mpl;
   let pc=0
   
-  dx = FortranIndex(dx)
-  dy = FortranIndex(dy)
+  dx = FortranIndex.array(dx)
+  dy = FortranIndex.array(dy)
   ptr = ptr - 1
   
   jump:

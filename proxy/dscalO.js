@@ -20,7 +20,7 @@ let dscal = function(n,da,dx,incx) {
   var ix,m,mp1;
   var pc=0
 
-  dx = FortranIndex(dx)
+  dx = FortranIndex.array(dx)
   
   jump:
   while(true) {
