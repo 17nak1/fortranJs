@@ -17,8 +17,8 @@ FortranIndex = require('./fArray.js')
 
 let dist = function(n,x,y) {
   let absxmy,scale,sum
-  x = FortranIndex(x)
-  y = FortranIndex(y)
+  x = FortranIndex.array(x)
+  y = FortranIndex.array(y)
   
   absxmy = Math.abs(x[1] - y[1]);
   if (absxmy <= 1) {

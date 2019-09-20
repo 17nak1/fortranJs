@@ -37,7 +37,7 @@ let fstats = function (fx,ifxwt,reset) {
                                        nsv*((fxstat[1]-f1sv)/fscale)**2+
                                        ifxwt*((fx-fxstat[1])/fscale)**2) / (nfxe-1))
     }
-    return 0
+    return 
   }
   
 module.exports = fstats;
