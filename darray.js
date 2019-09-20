@@ -1,17 +1,19 @@
 let darray  = function(base,u1,u2,arr){
-    this.base = base;
+    if(base === undefined){
+        this.base = 1;
+    }
+    else{
+        this.base = base;
+    }    
     this.u1 = u1;
     this.u2 = u2;
     if(arr !== undefined){
         this.arr = arr;
     }
-    if(this.base === undefined){
-        this.base = 1;
-    }
     return this
 }
 darray.prototype.clone = function(base,u1,u2) {
-    return new darray(base,u1,u2,this.arr);
+    return new darray(this.base + base - 1,u1,u2,this.arr);
 };
 
 darray.prototype.get = function(i,j){
