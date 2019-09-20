@@ -71,4 +71,12 @@ var fIdxArrHandlerY = {
 FortranIndex.matrix = function(a) {
   return new Proxy(a, fIdxArrHandlerX)
 }
+
+FortranIndex.getColumn = function(s,ns, index) {
+  let tempColumn = [];
+  for(let cc = 0; cc < ns; cc++) { // making s(1:ns,j)
+    tempColumn.push(s[cc][index]);
+  }
+  return FortranIndex(tempColumn);
+}
 module.exports = FortranIndex
