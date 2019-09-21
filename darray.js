@@ -22,7 +22,7 @@ darray.prototype.get = function(i,j){
     if(i === undefined){
         i = 1;
     }
-    return j === undefined ? this.arr[(this.base - 1) + i - 1] : this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 - 1))];
+    return j === undefined ? this.arr[(this.base - 1) + i - 1] : this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 + 1 - 1))];
 }
 
 darray.prototype.set = function(x,i,j){
@@ -33,7 +33,7 @@ darray.prototype.set = function(x,i,j){
         this.arr[(this.base - 1) + i - 1] = x;
     }
     else{
-        this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 - 1))] = x;
+        this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 + 1 - 1))] = x;
     }
 }
 module.exports = darray;

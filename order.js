@@ -29,7 +29,7 @@
 let order  = function(npts,fs,il,is,ih){
     let i,il0,j
     il0 = il.get()
-    j =  il0 + npts * Math.floor(il0 / npts) + 1//Math.mod(il0,npts)+ 1
+    j =  il0 - npts * Math.floor(il0 / npts) + 1//Math.mod(il0,npts)+ 1
     if (fs.get(j) >= fs.get(il.get())){
         ih.set(j)
         is.set(il0)
@@ -40,16 +40,16 @@ let order  = function(npts,fs,il,is,ih){
         il.set(j)
     }
 
-    for( i =il0 ; i<= il0+npts-2; i++){      
-        j = i + npts * Math.floor(i / npts) //Math.mod(i,npts)+1
-        if (fs.get(j) >= fs.get(ih)){
+    for( i =il0+1 ; i<= il0+npts-2; i++){      
+        j = i - npts * Math.floor(i / npts) + 1 //Math.mod(i,npts)+1
+        if (fs.get(j) >= fs.get(ih.get())){
           is.set(ih.get())
-          ih.set(j.get())
+          ih.set(j)
         }
-        else if (fs.get(j) > fs.get(is)){
+        else if (fs.get(j) > fs.get(is.get())){
           is.set(j)
         }
-        else if (fs.get(j) < fs.get(il)){
+        else if (fs.get(j) < fs.get(il.get())){
           il.set(j)
         }
     }   

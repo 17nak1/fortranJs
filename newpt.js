@@ -70,7 +70,7 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
             eqold = eqold && (xold.get(i) === xold.get(i))
          }
         }
-    small = eqbase || eqold
+    small.set( eqbase || eqold)
     // console.log(xold,xnew,small)
 }
 

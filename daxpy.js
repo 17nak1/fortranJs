@@ -41,6 +41,13 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
       }
       if( n < 4 ) return dy
       }
+      mp1 = m + 1
+      for (let i = mp1; i <= n; i +=4) {
+        dy.set(dy.get(i) + da*dx.get(i),i)
+        dy.set(dy.get(i + 1) + da*dx.get(i + 1),i + 1)
+        dy.set(dy.get(i + 2) + da*dx.get(i + 2),i + 2)
+        dy.set(dy.get(i + 3) + da*dx.get(i + 3),i + 3)
+      }
   } else {
     ix = 0
     iy = 0
