@@ -11,7 +11,7 @@ let setstp = function(nsubs,n,deltax,step){
 
     for(i = 1; i <= n ; i++){
       if (deltax.get(i) !== 0){
-        step.set( Math.sign(step.get(i),deltax.get(i)),i)
+        step.set( Math.abs(step.get(i)) * Math.sign(deltax.get(i)),i)
       }
       else{
         step.set(-step.get(i),i)

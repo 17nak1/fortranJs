@@ -67,7 +67,7 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
             xoldi = xold.get(i)
             xold.set(xbase.get(i)+coef*(xbase.get(i)-xold.get(i)),i)
             eqbase = eqbase && (xold.get(i) === xbase.get(i))
-            eqold = eqold && (xold.get(i) === xold.get(i))
+            eqold = eqold && (xold.get(i) === xoldi)
          }
         }
     small.set( eqbase || eqold)

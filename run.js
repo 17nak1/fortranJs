@@ -13,7 +13,7 @@ let run = function(){
 
     this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale.darr(),this.x0.darr(),this.fx,this.nfe,this.work.darr(),this.iwork.darr(),this.iflag)
 
-    switch (this.conv) {
+    switch (this.iflag) {
         case -1:
             console.log('number of function evaluations exceeds \'maxit\'');
           break;

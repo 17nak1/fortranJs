@@ -34,6 +34,10 @@ let dasum =  function (n, dx, incx) {
       das = dtemp
       return das
     }
+    mp1 = m + 1
+    for(let i = mp1; i <= n; i += 6) {
+      dtemp = dtemp + Math.abs(dx.get(i)) + Math.abs(dx.get(i + 1)) + Math.abs(dx.get(i + 2)) + Math.abs(dx.get(i + 3)) + Math.abs(dx.get(i + 4)) + Math.abs(dx.get(i + 5))
+    }
   }
     ix = 0
     if(incx < 0) incx = -incx

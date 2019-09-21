@@ -35,6 +35,16 @@ let dscal = function(n,da,dx,incx) {
         dx.set(da*dx.get(i),i)
       }
       if( n < 5 )  return dx
+
+      mp1 = m + 1
+      for(let i = mp1; i <= n; i =+ 5) {
+        dx.set(da*dx.get(i),i)
+        dx.set(da*dx.get(i + 1),i + 1)
+        dx.set(da*dx.get(i + 2),i + 2)
+        dx.set(da*dx.get(i + 3),i + 3)
+        dx.set(da*dx.get(i + 4),i + 4)
+      }
+    return dx
   }
   ix = 1
   if(incx < 0) ix = (-n+1)*incx + 1

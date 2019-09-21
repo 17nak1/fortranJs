@@ -73,12 +73,12 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
                   this.newpt(ns,-this.beta,s.clone((icent-1)*ns+1),s.clone((itemp-1)*ns+1),false,dum,small)
                }     
                goto_variable = 40; // 40
-               if (small){
+               if (small.get()){
                   break;
                }
-               this.evalf (c,ns,ips,s.clone((itemp-1)*ns+1),n,x,fc,this.nfe)
+               this.evalf (f,ns,ips,s.clone((itemp-1)*ns+1),n,x,fc,this.nfe)
                if (fc.get() < Math.min(fr.get(),fs.get(ih.get()))){
-                  this.dcopy(ns,s.clone(),itemp,1,s.clone(),ih,1)
+                  this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih.get()-1)*ns+1),1)
                   fs.set(fc.get(),ih.get())
                }
                else{
@@ -86,14 +86,14 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
                         if (j !== il.get()){
                            this.newpt(ns,-delta,s.clone((il.get()-1)*ns+1),s.clone((j-1)*ns+1),false,dum,small)
                            goto_variable = 40; // 40
-                           if (small){
+                           if (small.get()){
                               break;
                            }
                            this.evalf(f,ns,ips,s.clone((j-1)*ns+1),n,x,fs.clone(j),this.nfe)
                         }
                      }
                }   
-               updatc = false
+               updatc.set(false)
             }
             this.order(npts,fs,il,is,ih)
             goto_variable = 40;
