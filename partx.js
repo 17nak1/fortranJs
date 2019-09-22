@@ -48,7 +48,7 @@ let partx = function(n,ip,absdx,nsubs,nsvals){
       as1 = as1+absdx.get(ip.get(nused+ns1))
       ns2 = nleft-ns1
       if (ns2 > 0){
-        if (ns2 >= ((ns2-1)/this.nsmax+1)*this.nsmin){
+        if (ns2 >= (Math.floor((ns2-1)/this.nsmax)+1)*this.nsmin){
           as2 = asleft-as1
           gap = as1/ns1-as2/ns2
           if (gap > gapmax){

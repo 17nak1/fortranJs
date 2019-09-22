@@ -49,6 +49,6 @@ Main.f = function (n,x) {
   }
   return sum
 }
-Main.x0 = [11,-33];
+Main.x0 = [1, -1, 2, -2, 3, 3, -1, -15 , 70,1, -1, 2, -2, 3, 3, -1, -15 , 70];
 Main.tol = 0.00000000000001
 Main.run()

@@ -84,7 +84,7 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
                else{
                      for(j = 1; j<= npts; j++){          
                         if (j !== il.get()){
-                           this.newpt(ns,-delta,s.clone((il.get()-1)*ns+1),s.clone((j-1)*ns+1),false,dum,small)
+                           this.newpt(ns,-this.delta,s.clone((il.get()-1)*ns+1),s.clone((j-1)*ns+1),false,dum,small)
                            goto_variable = 40; // 40
                            if (small.get()){
                               break;
