@@ -23,7 +23,7 @@ let dasum =  function (n, dx, incx) {
      m = n - 6 * Math.floor(n / 6)
     if( m !== 0 ) {//40
       for(let i = 1; i <= m; i++) {
-        dtemp = dtemp + Math.abs(dx.get(i))
+        dtemp = dtemp + Math.abs(dx[i])
       }
       if( n < 6 ) {//60
         das = dtemp
@@ -32,7 +32,7 @@ let dasum =  function (n, dx, incx) {
     } 
     mp1 = m + 1
     for(let i = mp1; i <= n; i += 6) {
-      dtemp = dtemp + Math.abs(dx.get(i)) + Math.abs(dx.get(i + 1)) + Math.abs(dx.get(i + 2)) + Math.abs(dx.get(i + 3)) + Math.abs(dx.get(i + 4)) + Math.abs(dx.get(i + 5))
+      dtemp = dtemp + Math.abs(dx[i]) + Math.abs(dx[i + 1]) + Math.abs(dx[i + 2]) + Math.abs(dx[i + 3]) + Math.abs(dx[i + 4]) + Math.abs(dx[i + 5])
     }
 
   }
@@ -40,8 +40,8 @@ let dasum =  function (n, dx, incx) {
     ix = 0
     if(incx < 0) incx = -incx
     for (i = 0; i < n; i++) {
-      if(dx.get(ix) || dx.get(ix) === 0) {
-        dtemp = dtemp + Math.abs(dx.get(ix))
+      if(dx[ix] || dx[ix] === 0) {
+        dtemp = dtemp + Math.abs(dx[ix])
         ix = ix + incx
       }
     }

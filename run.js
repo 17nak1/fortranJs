@@ -11,7 +11,7 @@ let run = function(){
     this.work = new Array((this.n)*(this.n+6)+1)
     this.iwork = new Array(2*(this.n))
 
-    this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale.darr(),this.x0.darr(),this.fx,this.nfe,this.work.darr(),this.iwork.darr(),this.iflag)
+    this.subplx (this.f,this.n,this.tol,this.maxnfe,this.scale.dArray(),this.x0.dArray(),this.fx,this.nfe,this.work.dArray(),this.iwork.dArray(),this.iflag)
 
     switch (this.iflag) {
         case -1:
