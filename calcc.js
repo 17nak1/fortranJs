@@ -31,15 +31,18 @@
 *                https://www.netlib.org/opt/
 */
 let calcc = function(ns,s,ih,inew,updatc,c) {
-    if (updatc) {
-      if (ih === inew) return 0
+    if(inew === undefined){
+      inew = [0].dArray()
+    }
+    if (updatc[0]) {
+      if (ih[0] === inew[0]) return 0
       for(let i = 1; i <= ns; i++) {
-        c.set(c.get(i) + (s.get(i,inew) - s.get(i,ih)) / ns,i)
+        c[i] = c[i] + (s[i][inew[0]] - s[i][ih[0]]) / ns
       }
     } else {
-      this.dcopy (ns,[0].darr(),0,c,1)
+      this.dcopy (ns,[0].dArray(),0,c,1)
       for(let j = 1; j <= ns + 1 ; j++) {
-        if (j !== ih) {
+        if (j !== ih[0]) {
           this.daxpy (ns,1,s.clone((j-1)*ns+1),1,c,1)      
         }
       }

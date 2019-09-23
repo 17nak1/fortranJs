@@ -29,17 +29,24 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
     if( m === 0 ) {
       mp1 = m + 1
       for (let i = mp1; i <= n; i +=4) {
-        dy.set(dy.get(i) + da*dx.get(i),i)
-        dy.set(dy.get(i + 1) + da*dx.get(i + 1),i + 1)
-        dy.set(dy.get(i + 2) + da*dx.get(i + 2),i + 2)
-        dy.set(dy.get(i + 3) + da*dx.get(i + 3),i + 3)
+        dy[i] = dy[i] + da*dx[i]
+        dy[i + 1] = dy[i + 1] + da*dx[i + 1]
+        dy[i + 2] = dy[i + 2] + da*dx[i + 2]
+        dy[i + 3] = dy[i + 3] + da*dx[i + 3]
       }
       return dy
     } else {
       for (let i = 1; i <= m; i++) {
-        dy.set(dy.get(i) + da*dx.get(i),i)
+        dy[i] = dy[i] + da*dx[i]
       }
       if( n < 4 ) return dy
+      }
+      mp1 = m + 1
+      for (let i = mp1; i <= n; i +=4) {
+        dy[i] = dy[i] + da*dx[i]
+        dy[i + 1] = dy[i + 1] + da*dx[i + 1]
+        dy[i + 2] = dy[i + 2] + da*dx[i + 2]
+        dy[i + 3] = dy[i + 3] + da*dx[i + 3]
       }
   } else {
     ix = 0
@@ -51,7 +58,7 @@ let daxpy = function(n,da,dx,incx,dy,incy) {
       iy = (-n+1)*incy + 1
     }
     for (let i = 1; i <= n; i++) {
-      dy.set(dy.get(iy) + da*dx.get(ix),iy)
+      dy[iy] = dy[iy] + da*dx[ix]
       ix = ix + incx
       iy = iy + incy
     }

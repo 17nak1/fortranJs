@@ -28,29 +28,29 @@
 
 let order  = function(npts,fs,il,is,ih){
     let i,il0,j
-    il0 = il.get()
-    j =  il0 + npts * Math.floor(il0 / npts) + 1//Math.mod(il0,npts)+ 1
-    if (fs.get(j) >= fs.get(il.get())){
-        ih.set(j)
-        is.set(il0)
+    il0 = il[0]
+    j =  il0 - npts * Math.floor(il0 / npts) + 1//Math.mod(il0,npts)+ 1
+    if (fs[j] >= fs[il[0]]){
+        ih[0] = j
+        is[0] = il0
     }        
     else{
-        ih.set(il0)
-        is.set(j)
-        il.set(j)
+        ih[0] = il0
+        is[0] = j
+        il[0] = j
     }
 
-    for( i =il0 ; i<= il0+npts-2; i++){      
-        j = i + npts * Math.floor(i / npts) //Math.mod(i,npts)+1
-        if (fs.get(j) >= fs.get(ih)){
-          is.set(ih.get())
-          ih.set(j.get())
+    for( i =il0+1 ; i<= il0+npts-2; i++){      
+        j = i - npts * Math.floor(i / npts) + 1 //Math.mod(i,npts)+1
+        if (fs[j] >= fs[ih[0]]){
+          is[0] = ih[0]
+          ih[0] = j
         }
-        else if (fs.get(j) > fs.get(is)){
-          is.set(j)
+        else if (fs[j] > fs[is[0]]){
+          is[0] = j
         }
-        else if (fs.get(j) < fs.get(il)){
-          il.set(j)
+        else if (fs[j] < fs[il[0]]){
+          il[0] = j
         }
     }   
 }

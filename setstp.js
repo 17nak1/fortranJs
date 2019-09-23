@@ -1,7 +1,7 @@
 let setstp = function(nsubs,n,deltax,step){
     let i
     let dasum,stpfac
-    if (nsubs.get() > 1){
+    if (nsubs[0] > 1){
       stpfac = Math.min(Math.max(this.dasum(n,deltax,1)/this.dasum(n,step,1),this.omega),1/this.omega)
     }
     else{
@@ -10,11 +10,11 @@ let setstp = function(nsubs,n,deltax,step){
     this.dscal(n,stpfac,step,1)
 
     for(i = 1; i <= n ; i++){
-      if (deltax.get(i) !== 0){
-        step.set( Math.sign(step.get(i),deltax.get(i)),i)
+      if (deltax[i] !== 0){
+        step[i] =  Math.abs(step[i]) * Math.sign(deltax[i])
       }
       else{
-        step.set(-step.get(i),i)
+        step[i] = -step[i]
       }      
     }
 }

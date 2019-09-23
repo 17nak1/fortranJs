@@ -26,18 +26,18 @@ let dcopy = function(n,dx,incx,dy,incy) {
         if( m === 0 ) {
           mp1 = m + 1
           for (let i = mp1; i <= n; i += 7) {
-            dy.set(dx.get(i),i)
-            dy.set(dx.get(i + 1),i + 1)
-            dy.set(dx.get(i + 2),i + 2)
-            dy.set(dx.get(i + 3),i + 3)
-            dy.set(dx.get(i + 4),i + 4)
-            dy.set(dx.get(i + 5),i + 5)
-            dy.set(dx.get(i + 6),i + 6)
+            dy[i] = dx[i]
+            dy[i + 1] = dx[i + 1]
+            dy[i + 2] = dx[i + 2]
+            dy[i + 3] = dx[i + 3]
+            dy[i + 4] = dx[i + 4]
+            dy[i + 5] = dx[i + 5]
+            dy[i + 6] = dx[i + 6]
           }
           return
         }
         for(i = 1; i <= m; i++) {
-          dy.set(dx.get(i),i)
+          dy[i] = dx[i]
         }
         if( n  <  7 ) return dy
       } 
@@ -46,7 +46,7 @@ let dcopy = function(n,dx,incx,dy,incy) {
       if(incx < 0) ix = (-n+1)*incx + 1
       if(incy < 0) iy = (-n+1)*incy + 1
       for (let i = 1; i <= n; i++) {
-        dy.set(dx.get(ix),iy)
+        dy[iy] = dx[ix]
         ix = ix + incx
         iy = iy + incy
       }

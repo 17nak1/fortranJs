@@ -57,20 +57,20 @@ let newpt = function(ns,coef,xbase,xold,nnew,xnew,small){
     eqold = true
     if (nnew){
         for(i = 1; i<= ns; i++){
-            xnew.set(xbase.get(i)+coef*(xbase.get(i)-xold.get(i)),i)
-            eqbase = eqbase && (xnew.get(i) === xbase.get(i))
-            eqold = eqold && (xnew.get(i) === xold.get(i))
+            xnew[i] = xbase[i]+coef*(xbase[i]-xold[i])
+            eqbase = eqbase && (xnew[i] === xbase[i])
+            eqold = eqold && (xnew[i] === xold[i])
         }
     }
     else{
         for(i = 1; i<= ns; i++){
-            xoldi = xold.get(i)
-            xold.set(xbase.get(i)+coef*(xbase.get(i)-xold.get(i)),i)
-            eqbase = eqbase && (xold.get(i) === xbase.get(i))
-            eqold = eqold && (xold.get(i) === xold.get(i))
+            xoldi = xold[i]
+            xold[i] = xbase[i]+coef*(xbase[i]-xold[i])
+            eqbase = eqbase && (xold[i] === xbase[i])
+            eqold = eqold && (xold[i] === xoldi)
          }
         }
-    small = eqbase || eqold
+    small[0] =  eqbase || eqold
     // console.log(xold,xnew,small)
 }
 

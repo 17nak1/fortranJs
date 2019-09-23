@@ -20,29 +20,30 @@ let dscal = function(n,da,dx,incx) {
   if(n <= 0) return 0
   if(incx === 1) {
     m = n - 5 * Math.floor(n / 5)
-    if( m === 0 ) {
-        mp1 = m + 1
-        for(let i = mp1; i <= n; i =+ 5) {
-          dx.set(da*dx.get(i),i)
-          dx.set(da*dx.get(i + 1),i + 1)
-          dx.set(da*dx.get(i + 2),i + 2)
-          dx.set(da*dx.get(i + 3),i + 3)
-          dx.set(da*dx.get(i + 4),i + 4)
-        }
-      return dx
-    }
+    if( m !== 0 ) {
       for (let i = 1; i <= m; i++) {
-        dx.set(da*dx.get(i),i)
+        dx[i] = da*dx[i]
       }
       if( n < 5 )  return dx
+    }
+      mp1 = m + 1
+      for(let i = mp1; i <= n; i += 5) {
+        dx[i] = da*dx[i]
+        dx[i + 1] = da*dx[i + 1]
+        dx[i + 2] = da*dx[i + 2]
+        dx[i + 3] = da*dx[i + 3]
+        dx[i + 4] = da*dx[i + 4]
+      }
   }
-  ix = 1
-  if(incx < 0) ix = (-n+1)*incx + 1
-  for (let i = 1; i <= n; i++) {
-        dx.set(da*dx.get(ix),ix)
-        ix = ix + incx
+  else{
+    ix = 1
+    if(incx < 0) ix = (-n+1)*incx + 1
+    for (let i = 1; i <= n; i++) {
+          dx[ix] = da*dx[ix]
+          ix = ix + incx
+    }
   }
-  return dx
+
 }
 
 module.exports = dscal;

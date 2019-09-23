@@ -82,9 +82,9 @@
 //       intrinsi*               abs,mod
 
 let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
-  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs=[].darr();
+  let i,ifsptr,ins,insfnl,insptr,ipptr,isptr,istep,istptr,ns,nsubs=[].dArray();
   let bnsfa = [[-1,-2,0],[1,0,2]];
-  let dum ,scl = [].darr(),sfx = [].darr(),xpscl = [].darr();
+  let dum = [].dArray() ,scl = [].dArray(),sfx = [].dArray(),xpscl = [].dArray();
   let cmode;
 
   let goto_variable = 10;
@@ -93,13 +93,13 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
       switch (goto_variable){
         case 10:
           goto_variable = 15;
-          if(scale.get(1) >= 0){
+          if(scale[1] >= 0){
             //
             // 10
             //
             for( i = 1; i <= n; i++){
-              xpscl = x.get(i)+scale.get(i);
-              if (xpscl === x.get(i)){
+              xpscl = x[i]+scale[i];
+              if (xpscl === x[i]){
                  goto_variable = 120;
                  break;
               }
@@ -109,10 +109,10 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
             //
             //20
             //
-            scl.set(Math.abs(scale.get(1)))
+            scl[0] = Math.abs(scale[1])
             for( i = 1; i <= n; i++){
-              xpscl = x.get(i)+scl.get();
-              if (xpscl === x.get(i)){
+              xpscl = x[i]+scl[0];
+              if (xpscl === x[i]){
                 goto_variable = 120;
                 break;
               }
@@ -128,7 +128,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           isptr = istptr + n;
           ifsptr = isptr + this.nsmax * (this.nsmax + 3)
           insptr = n + 1
-          if (scale.get() > 0){
+          if (scale[0] > 0){
             this.dcopy(n,scale,1,work,1)
             this.dcopy(n,scale,1,work.clone(istptr),1)
           }
@@ -142,7 +142,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            iwork.set(i,i);
+            iwork[i] = i
           }
           
           this.nfe = 0
@@ -166,13 +166,13 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            work.set(Math.abs(work.get(i)),i)
+            work[i] = Math.abs(work[i])
           }
           this.sortd(n,work,iwork)
           this.partx(n,iwork,work,nsubs,iwork.clone(insptr))
           this.dcopy(n,x,1,work,1)
           ins = insptr
-          insfnl = insptr + nsubs.get() - 1
+          insfnl = insptr + nsubs[0] - 1
           ipptr = 1
 
           goto_variable = 60;
@@ -184,7 +184,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // 60
           //
 
-          ns = iwork.get(ins)
+          ns = iwork[ins]
           //
           // continue
           //
@@ -217,7 +217,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
 
           for( i = 1; i <= n; i++){
-            work.set(x.get(i) - work.get(i),i)
+            work[i] = x[i] - work[i]
           }
 
           //
@@ -233,7 +233,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           // 100
           //
           for( i = 1; i <= n; i++){
-            if (Math.max(Math.abs(work.get(i)),Math.abs(work.get(istep)* this.psi)) / Math.max(Math.abs(x.get(i)),1) > tol){
+            if (Math.max(Math.abs(work[i]),Math.abs(work[istep] * this.psi)) / Math.max(Math.abs(x[i]),1) > tol){
               this.setstp(nsubs,n,work,work.clone(istptr));
               goto_variable = 40;
               break;
@@ -253,7 +253,7 @@ let subplx = function(f,n,tol,maxnfe,scale,x,fx,nfe,work,iwork,iflag){
           //
           // 110
           //
-          fx = sfx.out
+          this.fx = sfx[0]
           return 0;
         break;
 
