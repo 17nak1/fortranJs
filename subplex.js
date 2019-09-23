@@ -25,7 +25,7 @@ var subplex = {
      nfe : 0,
      iflag : 0
 }
-require('./dArray.js')
+require('./darray.js')
 
 subplex.evalf = require('./evalf.js')
 subplex.dcopy = require('./dcopy.js')
