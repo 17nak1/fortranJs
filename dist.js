@@ -16,7 +16,7 @@
 
 let dist = function(n,x,y) {
  let absxmy,scale,sum
- absxmy = Math.abs(x.get(1)-y.get(1))
+ absxmy = Math.abs(x[1]-y[1])
  if (absxmy <= 1) {
    sum = absxmy*absxmy
    scale = 1
@@ -25,7 +25,7 @@ let dist = function(n,x,y) {
    scale = absxmy
  }
  for (let i = 2; i <= n; i++) {
-   absxmy = Math.abs(x.get(i)-y.get(i))
+   absxmy = Math.abs(x[i]-y[i])
    if (absxmy <= scale) {
      sum = sum+(absxmy/scale)**2
    } else {

@@ -1,7 +1,7 @@
 let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
-    let i,icent,ih = [].darr(),il = [].darr(),inew = [].darr(),is = [].darr(),itemp,j,npts
-    let dist,dum = [].darr(),fc = [].darr(),fe = [].darr(),fr = [].darr(),tol
-    let small = [].darr(),updatc = [].darr()
+    let i,icent,ih = [].dArray(),il = [].dArray(),inew = [].dArray(),is = [].dArray(),itemp,j,npts
+    let dist,dum = [].dArray(),fc = [].dArray(),fe = [].dArray(),fr = [].dArray(),tol
+    let small = [].dArray(),updatc = [].dArray()
     s = s.clone(1,ns,ns+3);
     let goto_variable = 0;
     while (true)
@@ -19,94 +19,94 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             npts = ns+1
             icent = ns+2
             itemp = ns+3
-            updatc.set(false)
+            updatc[0] = false
             this.start(n,x,step,ns,ips,s.clone(1,ns,ns+3),small)
-            if (small.get()){
+            if (small[0]){
                iflag = 1
                return
             }
-            fs.set(fx.get(),1)
+            fs[1] = fx[0]
             for(j = 2 ; j<= npts; j++){// 10
                this.evalf (f,ns,ips,s.clone((j-1)*ns+1),n,x,fs.clone(j),this.nfe)
             }
 
-            il.set(1)
+            il[0] = 1
             this.order(npts,fs,il,is,ih)
-            this.tol = this.psi*this.dist(ns,s.clone((ih.get()-1)*ns+1),s.clone((il.get()-1)*ns+1))
+            this.tol = this.psi*this.dist(ns,s.clone((ih[0]-1)*ns+1),s.clone((il[0]-1)*ns+1))
             goto_variable = 20;
          break;
          case 20: // 20
             this.calcc (ns,s,ih,inew,updatc,s.clone((icent-1)*ns+1))
-            updatc.set(true)
-            inew.set(ih.get())
-            this.newpt(ns,this.alpha,s.clone((icent-1)*ns+1),s.clone((ih.get()-1)*ns+1),true,s.clone((itemp-1)*ns+1),small)
+            updatc[0] = true
+            inew[0] = ih[0]
+            this.newpt(ns,this.alpha,s.clone((icent-1)*ns+1),s.clone((ih[0]-1)*ns+1),true,s.clone((itemp-1)*ns+1),small)
             goto_variable = 40; // 40
-            if (small.get()){
+            if (small[0]){
                break;
             }
 
             this.evalf (f,ns,ips,s.clone((itemp-1)*ns+1),n,x,fr,this.nfe)
-            if (fr.get() < fs.get(il.get())){  
-               this.newpt(ns,-this.gamma,s.clone((icent-1)*ns+1),s.clone((itemp-1)*ns+1),true,s.clone((ih.get()-1)*ns+1),small)
+            if (fr[0] < fs[il[0]]){  
+               this.newpt(ns,-this.gamma,s.clone((icent-1)*ns+1),s.clone((itemp-1)*ns+1),true,s.clone((ih[0]-1)*ns+1),small)
                goto_variable = 40; // 40
-               if (small.get()){
+               if (small[0]){
                   break;
                }
-               this.evalf (f,ns,ips,s.clone((ih.get()-1)*ns+1),n,x,fe,this.nfe)
-               if (fe.get() < fr.get()){
-                  fs.set(fe.get(),ih.get())
+               this.evalf (f,ns,ips,s.clone((ih[0]-1)*ns+1),n,x,fe,this.nfe)
+               if (fe[0] < fr[0]){
+                  fs[ih[0]] = fe[0]
                }
                else{
-                  this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih.get()-1)*ns+1),1)
-                  fs.set(fr.get(),ih.get())
+                  this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih[0]-1)*ns+1),1)
+                  fs[ih[0]] = fr[0]
                }
             }
-            else if (fr.get() < fs.get(is.get())){
-               this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih.get()-1)*ns+1),1)
-               fs.set(fr.get(),ih.get())
+            else if (fr[0] < fs[is[0]]){
+               this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih[0]-1)*ns+1),1)
+               fs[ih[0]] = fr[0]
             }
             else{
-               if (fr.get() > fs.get(ih.get())){
-                  this.newpt(ns,-this.beta,s.clone((icent-1)*ns+1),s.clone((ih.get()-1)*ns+1),true,s.clone((itemp-1)*ns+1),small)
+               if (fr[0] > fs[ih[0]]){
+                  this.newpt(ns,-this.beta,s.clone((icent-1)*ns+1),s.clone((ih[0]-1)*ns+1),true,s.clone((itemp-1)*ns+1),small)
                }
                else{
                   this.newpt(ns,-this.beta,s.clone((icent-1)*ns+1),s.clone((itemp-1)*ns+1),false,dum,small)
                }     
                goto_variable = 40; // 40
-               if (small.get()){
+               if (small[0]){
                   break;
                }
                this.evalf (f,ns,ips,s.clone((itemp-1)*ns+1),n,x,fc,this.nfe)
-               if (fc.get() < Math.min(fr.get(),fs.get(ih.get()))){
-                  this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih.get()-1)*ns+1),1)
-                  fs.set(fc.get(),ih.get())
+               if (fc[0] < Math.min(fr[0],fs[ih[0]])){
+                  this.dcopy(ns,s.clone((itemp-1)*ns+1),1,s.clone((ih[0]-1)*ns+1),1)
+                  fs[ih[0]] = fc[0]
                }
                else{
                      for(j = 1; j<= npts; j++){          
-                        if (j !== il.get()){
-                           this.newpt(ns,-this.delta,s.clone((il.get()-1)*ns+1),s.clone((j-1)*ns+1),false,dum,small)
+                        if (j !== il[0]){
+                           this.newpt(ns,-this.delta,s.clone((il[0]-1)*ns+1),s.clone((j-1)*ns+1),false,dum,small)
                            goto_variable = 40; // 40
-                           if (small.get()){
+                           if (small[0]){
                               break;
                            }
                            this.evalf(f,ns,ips,s.clone((j-1)*ns+1),n,x,fs.clone(j),this.nfe)
                         }
                      }
                }   
-               updatc.set(false)
+               updatc[0] = false
             }
             this.order(npts,fs,il,is,ih)
             goto_variable = 40;
          break;
          case 40: //40   continue
-            fx.set(fs.get(il.get()))
+            fx[0] = fs[il[0]]
             goto_variable = 50;
          break;
          case 50: // 50   continue
             if (this.nfe >= maxnfe){
                iflag = -1
             }
-            else if (this.dist(ns,s.clone((ih.get()-1)*ns+1),s.clone((il.get()-1)*ns+1)) <= this.tol || small.get()){
+            else if (this.dist(ns,s.clone((ih[0]-1)*ns+1),s.clone((il[0]-1)*ns+1)) <= this.tol || small[0]){
                iflag = 0
             }
             else{
@@ -115,7 +115,7 @@ let simplx = function(f,n,step,ns,ips,maxnfe,cmode,x,fx,nfe,s,fs,iflag){
             }
 
             for(i= 1 ; i<= ns; i++){
-               x.set(s.get(i,il.get()),ips.get(i))
+               x[ips[i]] = s[i][il[0]]
             }
             return
          break;

@@ -25,21 +25,21 @@ let sortd = function(n,xkey,ix){
     ilast = n-1
     while(ifirst <= ilast){
         for(i = ifirst; i <= ilast; i++){
-            ixi = ix.get(i)
-            ixip1 = ix.get(i+1)
-            if (xkey.get(ixi) < xkey.get(ixip1)){
-                ix.set(ixip1, i)
-                ix.set(ixi, i+1)
+            ixi = ix[i]
+            ixip1 = ix[i+1]
+            if (xkey[ixi] < xkey[ixip1]){
+                ix[i] = ixip1
+                ix[i + 1] = ixi
                 iswap = i
             }
         }
         ilast = iswap -1
         for( i = ilast; i>0 ; i--){
-            ixi = ix.get(i)
-            ixip1 = ix.get(i+1)
-            if (xkey.get(ixi) < xkey.get(ixip1)){
-                ix.set(ixip1, i)
-                ix.set(ixi, i+1)
+            ixi = ix[i]
+            ixip1 = ix[i+1]
+            if (xkey[ixi] < xkey[ixip1]){
+                ix[i] = ixip1
+                ix[i + 1] = ixi
                 iswap = i
             }
         }

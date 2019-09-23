@@ -1,43 +1,52 @@
-let darray  = function(base,u1,u2,arr){
-    if(base === undefined){
-        base = 1;
+let yHandeler = {
+    get : function (target, prop, receiver) {
+        if (typeof prop === 'symbol' || isNaN(+prop))
+            return target[prop]
+        return target.arr[(target.base - 1) + target.i - 1 + ((parseInt(prop) - 1)*(target.u1 + 1 - 1))]
+    },
+    set : function (target, prop, value, receiver) {
+        target.arr[(target.base - 1) + target.i - 1 + ((parseInt(prop)  - 1)*(target.u1 + 1 - 1))] = value   
     }
-    this.base = base;
-     
+}
+let xHandeler = {
+    get : function (target, prop, receiver) {       
+            if (typeof prop === 'symbol' || isNaN(+prop))
+                return target[prop]
+            target.i = parseInt(prop)  
+            if(target.i <= 0)
+                target.i = 1              
+            if(target.u1 === undefined && target.u2 === undefined)
+                return target.arr[(target.base - 1) + target.i - 1]
+            return new Proxy(target, yHandeler)
+    },
+    set : function (target, prop, value, receiver) {         
+            if (typeof prop === 'symbol' || isNaN(+prop) || target.u1 !== undefined || target.u2 !== undefined)
+                  return 0;                  
+            target.i = parseInt(prop)
+            if(target.i <= 0)
+                target.i = 1  
+            target.arr[(target.base - 1) + target.i - 1] = value; 
+    }
+}
+
+let dArray  = function(base,u1,u2,arr){
+    this.arr = arr === undefined ? [] : arr
+    this.base = base === undefined ? 1 : base;  
     this.u1 = u1;
     this.u2 = u2;
-    if(arr !== undefined){
-        this.arr = arr;
-    }
-    return this
+    this.i = 1;
+    return new Proxy(this, xHandeler)
 }
-darray.prototype.clone = function(base,u1,u2) {
+
+dArray.prototype.clone = function(base,u1,u2) {
     if(base === undefined){
         base = 1
     }
-    return new darray(this.base + base - 1,u1,u2,this.arr);
+    return new dArray(this.base + base - 1,u1,u2,this.arr);
 };
 
-darray.prototype.get = function(i,j){
-    if(i === undefined){
-        i = 1;
-    }
-    return j === undefined ? this.arr[(this.base - 1) + i - 1] : this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 + 1 - 1))];
-}
+module.exports = dArray;
 
-darray.prototype.set = function(x,i,j){
-    if(i === undefined){
-        i = 1;
-    }
-    if(j === undefined){
-        this.arr[(this.base - 1) + i - 1] = x;
-    }
-    else{
-        this.arr[(this.base - 1) + i - 1 + ((j - 1)*(this.u1 + 1 - 1))] = x;
-    }
-}
-module.exports = darray;
-
-Array.prototype.darr = function(base,u1,u2) {
-    return new darray(base,u1,u2,this);
+Array.prototype.dArray = function(base,u1,u2) {
+    return new dArray(base,u1,u2,this);
 };
