@@ -26,7 +26,7 @@ var subplex = {
      scale : [1],
      hessian : false
 }
-require('./dArray.js')
+require('./darray.js')
 
 subplex.evalf = require('./evalf.js')
 subplex.dcopy = require('./dcopy.js')
